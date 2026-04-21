@@ -468,7 +468,6 @@
       ],
       "isPublic": true,
       "isAuto": false,
-      "mood": "calm",
       "playCount": 234,
       "createdAt": "2024-02-01T00:00:00Z",
       "updatedAt": "2024-02-01T00:00:00Z"
@@ -487,7 +486,6 @@
       ],
       "isPublic": true,
       "isAuto": false,
-      "mood": "energetic",
       "playCount": 189,
       "createdAt": "2024-02-05T00:00:00Z",
       "updatedAt": "2024-02-05T00:00:00Z"
@@ -506,7 +504,6 @@
       ],
       "isPublic": true,
       "isAuto": true,
-      "mood": "calm",
       "playCount": 567,
       "createdAt": "2024-02-10T00:00:00Z",
       "updatedAt": "2024-02-10T00:00:00Z"
@@ -526,7 +523,6 @@
       ],
       "isPublic": false,
       "isAuto": false,
-      "mood": null,
       "playCount": 890,
       "createdAt": "2024-01-20T00:00:00Z",
       "updatedAt": "2024-03-01T00:00:00Z"
@@ -545,10 +541,25 @@
       ],
       "isPublic": true,
       "isAuto": false,
-      "mood": "romantic",
       "playCount": 312,
       "createdAt": "2024-02-14T00:00:00Z",
       "updatedAt": "2024-02-14T00:00:00Z"
+    },
+    {
+      "id": "p1776784371753",
+      "title": "f",
+      "description": "f",
+      "cover": "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=400&h=400&fit=crop",
+      "userId": "u1",
+      "songIds": [
+        "s1",
+        "s3"
+      ],
+      "isPublic": true,
+      "isAuto": false,
+      "playCount": 0,
+      "createdAt": "2026-04-21T15:12:51.753Z",
+      "updatedAt": "2026-04-21T15:12:51.753Z"
     }
   ],
   "listenHistory": [

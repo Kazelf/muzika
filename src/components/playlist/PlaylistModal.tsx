@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Music, Lock, Globe, Image } from 'lucide-react';
-import { Playlist } from '../../types';
+import { Playlist, Song } from '../../types';
 import { playlistsService } from '../../services/music.service';
 import { useAuth } from '../../contexts/AuthContext';
-import { generateId } from '../../utils/helpers';
 import toast from 'react-hot-toast';
+import { songsService } from '../../services/music.service';
 
 const DEFAULT_COVERS = [
   'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=400&fit=crop',
@@ -34,6 +34,12 @@ export default function PlaylistModal({ playlist, onClose, onSave }: PlaylistMod
   const [isPublic, setIsPublic] = useState(playlist?.isPublic ?? true);
   const [isLoading, setIsLoading] = useState(false);
   const [coverError, setCoverError] = useState(false);
+  const [allSongs, setAllSongs] = useState<Song[]>([]);
+  const [selectedSongIds, setSelectedSongIds] = useState<string[]>(playlist?.songIds || []);
+
+  useEffect(() => {
+    songsService.getAll().then(res => setAllSongs(res.data)).catch(() => {});
+  }, []);
 
   const previewCover = coverUrl.trim() || '';
 
@@ -52,21 +58,22 @@ export default function PlaylistModal({ playlist, onClose, onSave }: PlaylistMod
           description: description.trim(),
           cover: finalCover,
           isPublic,
+          songIds: selectedSongIds,
           updatedAt: new Date().toISOString(),
         });
         onSave(res.data);
         toast.success('Đã cập nhật playlist');
       } else {
         // Create
-        const newPlaylist: Omit<Playlist, 'id'> = {
+        const newPlaylist: Playlist = {
+          id: `p${Date.now()}`,
           title: title.trim(),
           description: description.trim(),
           cover: finalCover,
           userId: user.id,
-          songIds: [],
+          songIds: selectedSongIds,
           isPublic,
           isAuto: false,
-          mood: null,
           playCount: 0,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
@@ -223,6 +230,44 @@ export default function PlaylistModal({ playlist, onClose, onSave }: PlaylistMod
                 <Lock size={16} />
                 Riêng tư
               </button>
+            </div>
+
+            {/* Song Selection */}
+            <div>
+              <label className="block text-sm font-medium mb-2" style={{ color: '#383318' }}>
+                Chọn bài hát
+              </label>
+              <div className="max-h-48 overflow-y-auto space-y-1 p-2 rounded-xl border border-[rgba(187,178,143,0.3)]" style={{ background: '#fbf3dd' }}>
+                {allSongs.length === 0 ? (
+                  <p className="text-xs text-center p-2" style={{ color: '#665f41' }}>Đang tải bài hát...</p>
+                ) : (
+                  allSongs.map(song => {
+                    const isSelected = selectedSongIds.includes(song.id);
+                    return (
+                      <div
+                        key={song.id}
+                        onClick={() => {
+                          if (isSelected) {
+                            setSelectedSongIds(prev => prev.filter(id => id !== song.id));
+                          } else {
+                            setSelectedSongIds(prev => [...prev, song.id]);
+                          }
+                        }}
+                        className="flex items-center gap-3 p-2 rounded-lg cursor-pointer transition-colors hover:bg-[#f2e8c7]"
+                      >
+                        <div className={`w-4 h-4 rounded border flex items-center justify-center flex-shrink-0 transition-colors ${isSelected ? 'bg-[#486272] border-[#486272]' : 'border-[#bbb28f] bg-transparent'}`}>
+                          {isSelected && <Music size={10} color="#fff9ec" />}
+                        </div>
+                        <img src={song.cover} alt={song.title} className="w-8 h-8 rounded-md object-cover flex-shrink-0" />
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium truncate" style={{ color: '#383318' }}>{song.title}</p>
+                          <p className="text-xs truncate" style={{ color: '#665f41' }}>{song.artist}</p>
+                        </div>
+                      </div>
+                    );
+                  })
+                )}
+              </div>
             </div>
 
             <button

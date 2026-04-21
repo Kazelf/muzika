@@ -64,7 +64,6 @@ export interface Playlist {
   songIds: string[];
   isPublic: boolean;
   isAuto: boolean;
-  mood: string | null;
   playCount: number;
   createdAt: string;
   updatedAt: string;

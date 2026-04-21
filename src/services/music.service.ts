@@ -26,7 +26,7 @@ export const playlistsService = {
   getById: (id: string) => api.get<Playlist>(`/playlists/${id}`),
   getByUser: (userId: string) => api.get<Playlist[]>(`/playlists?userId=${userId}`),
   getPublic: () => api.get<Playlist[]>('/playlists?isPublic=true'),
-  create: (data: Omit<Playlist, 'id'>) => api.post<Playlist>('/playlists', data),
+  create: (data: Playlist) => api.post<Playlist>('/playlists', data),
   update: (id: string, data: Partial<Playlist>) => api.patch<Playlist>(`/playlists/${id}`, data),
   delete: (id: string) => api.delete(`/playlists/${id}`),
   addSong: (id: string, songId: string, songIds: string[]) =>

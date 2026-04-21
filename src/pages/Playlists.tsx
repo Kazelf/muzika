@@ -21,13 +21,15 @@ export default function Playlists() {
   const [editingPlaylist, setEditingPlaylist] = useState<Playlist | null>(null);
   const [activeTab, setActiveTab] = useState<'my' | 'public'>('my');
 
-  // Check for ?new=true on mount, then clear it
+  // Check for ?new=true on mount/change, then clear it
   useEffect(() => {
     if (searchParams.get('new') === 'true') {
       setShowModal(true);
-      setSearchParams({}, { replace: true });
+      const newParams = new URLSearchParams(searchParams);
+      newParams.delete('new');
+      setSearchParams(newParams, { replace: true });
     }
-  }, []);
+  }, [searchParams, setSearchParams]);
 
   const load = useCallback(async () => {
     try {
