@@ -11,7 +11,6 @@ interface SongCount { song: Song; count: number; minutes: number; }
 export default function Stats() {
   const { user } = useAuth();
   const [history, setHistory] = useState<ListenHistory[]>([]);
-  const [allSongs, setAllSongs] = useState<Song[]>([]);
   const [topSongs, setTopSongs] = useState<SongCount[]>([]);
   const [genreStats, setGenreStats] = useState<{ genre: string; count: number; pct: number }[]>([]);
   const [weeklyActivity, setWeeklyActivity] = useState<{ day: string; mins: number }[]>([]);
@@ -28,7 +27,6 @@ export default function Stats() {
         const hist: ListenHistory[] = histRes.data;
         const songs: Song[] = songsRes.data;
         setHistory(hist);
-        setAllSongs(songs);
         const songMap = new Map(songs.map(s => [s.id, s]));
 
         // Top songs
@@ -61,10 +59,14 @@ export default function Stats() {
         setGenreStats(genres);
 
         // Weekly activity (last 7 days)
-        const now = new Date();
+        // Use latest playedAt as anchor so the chart isn't empty
+        // when seed/fake data isn't within the user's "today" range/timezone.
+        const anchor = hist.length
+          ? new Date(Math.max(...hist.map(h => new Date(h.playedAt).getTime())))
+          : new Date();
         const days: { day: string; mins: number }[] = [];
         for (let i = 6; i >= 0; i--) {
-          const d = new Date(now);
+          const d = new Date(anchor);
           d.setDate(d.getDate() - i);
           const dayHist = hist.filter(h => {
             const hd = new Date(h.playedAt);
@@ -141,14 +143,18 @@ export default function Stats() {
         <div className="p-6 rounded-2xl" style={{ background: '#fbf3dd' }}>
           <div className="flex items-end gap-3 h-32">
             {weeklyActivity.map(({ day, mins }, i) => (
-              <div key={i} className="flex-1 flex flex-col items-center gap-2">
-                <div className="w-full rounded-t-lg transition-all"
-                  style={{
-                    height: `${maxMins > 0 ? (mins / maxMins) * 100 : 0}%`,
-                    minHeight: mins > 0 ? '4px' : '0',
-                    background: '#2c2c2c',
-                    maxHeight: '100px',
-                  }} />
+              <div key={i} className="flex-1 flex flex-col items-center gap-2 h-full">
+                <div className="w-full h-full flex items-end">
+                  <div
+                    className="w-full rounded-t-lg transition-all"
+                    style={{
+                      height: `${maxMins > 0 ? (mins / maxMins) * 100 : 0}%`,
+                      minHeight: mins > 0 ? '4px' : '0',
+                      background: '#bbb28f',
+                      maxHeight: '100px',
+                    }}
+                  />
+                </div>
                 <span className="text-xs" style={{ color: '#bbb28f' }}>{day}</span>
               </div>
             ))}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Play, MoreHorizontal, Lock } from 'lucide-react';
 import { Playlist, Song } from '../../types';
@@ -14,20 +15,26 @@ interface PlaylistCardProps {
 
 export default function PlaylistCard({ playlist, onEdit, onDelete, index }: PlaylistCardProps) {
   const { playSong, setQueue } = usePlayer();
+  const navigate = useNavigate();
   const [songs, setSongs] = useState<Song[]>([]);
 
   useEffect(() => {
     if (playlist.songIds.length === 0) return;
     Promise.all(playlist.songIds.slice(0, 4).map(id => songsService.getById(id)))
-      .then(results => setSongs(results.map(r => r.data)));
+      .then(results => setSongs(results.map(r => r.data)))
+      .catch(() => {});
   }, [playlist.songIds]);
 
-  const handlePlay = async (e: React.MouseEvent) => {
+  const handlePlay = (e: React.MouseEvent) => {
     e.stopPropagation();
     if (songs.length > 0) {
       setQueue(songs);
       playSong(songs[0], songs);
     }
+  };
+
+  const handleCardClick = () => {
+    navigate(`/playlists/${playlist.id}`);
   };
 
   return (
@@ -37,6 +44,7 @@ export default function PlaylistCard({ playlist, onEdit, onDelete, index }: Play
       transition={{ delay: (index || 0) * 0.06 }}
       className="group relative rounded-2xl overflow-hidden cursor-pointer card-hover p-3"
       style={{ background: '#fbf3dd' }}
+      onClick={handleCardClick}
     >
       {/* Cover collage or single */}
       <div className="relative aspect-square mb-3 overflow-hidden rounded-xl">
@@ -64,12 +72,6 @@ export default function PlaylistCard({ playlist, onEdit, onDelete, index }: Play
             style={{ background: '#fff9ec' }}>
             <Play size={16} style={{ color: '#2c2c2c' }} className="ml-0.5" />
           </button>
-          {(onEdit || onDelete) && (
-            <button onClick={e => { e.stopPropagation(); onEdit?.(playlist); }}
-              className="p-2 rounded-lg hover:bg-white/20 transition-colors">
-              <MoreHorizontal size={16} color="white" />
-            </button>
-          )}
         </div>
 
         {/* Auto badge */}

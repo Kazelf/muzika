@@ -468,7 +468,6 @@
       ],
       "isPublic": true,
       "isAuto": false,
-      "mood": "calm",
       "playCount": 234,
       "createdAt": "2024-02-01T00:00:00Z",
       "updatedAt": "2024-02-01T00:00:00Z"
@@ -487,7 +486,6 @@
       ],
       "isPublic": true,
       "isAuto": false,
-      "mood": "energetic",
       "playCount": 189,
       "createdAt": "2024-02-05T00:00:00Z",
       "updatedAt": "2024-02-05T00:00:00Z"
@@ -506,7 +504,6 @@
       ],
       "isPublic": true,
       "isAuto": true,
-      "mood": "calm",
       "playCount": 567,
       "createdAt": "2024-02-10T00:00:00Z",
       "updatedAt": "2024-02-10T00:00:00Z"
@@ -526,7 +523,6 @@
       ],
       "isPublic": false,
       "isAuto": false,
-      "mood": null,
       "playCount": 890,
       "createdAt": "2024-01-20T00:00:00Z",
       "updatedAt": "2024-03-01T00:00:00Z"
@@ -545,10 +541,25 @@
       ],
       "isPublic": true,
       "isAuto": false,
-      "mood": "romantic",
       "playCount": 312,
       "createdAt": "2024-02-14T00:00:00Z",
       "updatedAt": "2024-02-14T00:00:00Z"
+    },
+    {
+      "id": "p1776784371753",
+      "title": "f",
+      "description": "f",
+      "cover": "https://images.unsplash.com/photo-1506157786151-b8491531f063?w=400&h=400&fit=crop",
+      "userId": "u1",
+      "songIds": [
+        "s1",
+        "s3"
+      ],
+      "isPublic": true,
+      "isAuto": false,
+      "playCount": 0,
+      "createdAt": "2026-04-21T15:12:51.753Z",
+      "updatedAt": "2026-04-21T15:12:51.753Z"
     }
   ],
   "listenHistory": [
@@ -620,6 +631,104 @@
       "userId": "u1",
       "songId": "s12",
       "playedAt": "2024-03-24T20:00:00Z",
+      "duration": 233
+    },
+    {
+      "id": "h20260415_1",
+      "userId": "u1",
+      "songId": "s1",
+      "playedAt": "2026-04-15T12:10:00",
+      "duration": 207
+    },
+    {
+      "id": "h20260415_2",
+      "userId": "u1",
+      "songId": "s7",
+      "playedAt": "2026-04-15T18:45:00",
+      "duration": 228
+    },
+    {
+      "id": "h20260416_1",
+      "userId": "u1",
+      "songId": "s9",
+      "playedAt": "2026-04-16T11:30:00",
+      "duration": 195
+    },
+    {
+      "id": "h20260416_2",
+      "userId": "u1",
+      "songId": "s3",
+      "playedAt": "2026-04-16T20:05:00",
+      "duration": 222
+    },
+    {
+      "id": "h20260417_1",
+      "userId": "u1",
+      "songId": "s12",
+      "playedAt": "2026-04-17T13:15:00",
+      "duration": 233
+    },
+    {
+      "id": "h20260417_2",
+      "userId": "u1",
+      "songId": "s6",
+      "playedAt": "2026-04-17T21:00:00",
+      "duration": 207
+    },
+    {
+      "id": "h20260418_1",
+      "userId": "u1",
+      "songId": "s2",
+      "playedAt": "2026-04-18T10:20:00",
+      "duration": 176
+    },
+    {
+      "id": "h20260418_2",
+      "userId": "u1",
+      "songId": "s4",
+      "playedAt": "2026-04-19T19:40:00",
+      "duration": 199
+    },
+    {
+      "id": "h20260419_1",
+      "userId": "u1",
+      "songId": "s15",
+      "playedAt": "2026-04-19T12:55:00",
+      "duration": 174
+    },
+    {
+      "id": "h20260419_2",
+      "userId": "u1",
+      "songId": "s7",
+      "playedAt": "2026-04-19T21:10:00",
+      "duration": 228
+    },
+    {
+      "id": "h20260420_1",
+      "userId": "u1",
+      "songId": "s1",
+      "playedAt": "2026-04-20T09:25:00",
+      "duration": 207
+    },
+    {
+      "id": "h20260420_2",
+      "userId": "u1",
+      "songId": "s9",
+      "playedAt": "2026-04-20T18:15:00",
+      "duration": 195
+    },
+    {
+      "id": "h20260421_1",
+      "userId": "u1",
+      "songId": "s3",
+      "playedAt": "2026-04-21T11:05:00",
+      "duration": 222
+    },
+    {
+      "id": "h20260421_2",
+      "userId": "u1",
+      "songId": "s12",
+      "playedAt": "2026-04-21T20:50:00",
       "duration": 233
     }
   ],

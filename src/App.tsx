@@ -7,6 +7,7 @@ import Discover from './pages/Discover';
 import Search from './pages/Search';
 import Library from './pages/Library';
 import Playlists from './pages/Playlists';
+import PlaylistDetail from './pages/PlaylistDetail';
 import NowPlaying from './pages/NowPlaying';
 import Stats from './pages/Stats';
 import Social from './pages/Social';
@@ -46,6 +47,7 @@ function AppRoutes() {
         <Route path="search" element={<Search />} />
         <Route path="library" element={<Library />} />
         <Route path="playlists" element={<Playlists />} />
+        <Route path="playlists/:id" element={<PlaylistDetail />} />
         <Route path="now-playing" element={<NowPlaying />} />
         <Route path="stats" element={<Stats />} />
         <Route path="social" element={<Social />} />

@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { Plus, Trash2, Edit, Play } from 'lucide-react';
-import { Playlist, Song } from '../types';
-import { playlistsService, songsService } from '../services/music.service';
+import { Plus, Trash2, Edit } from 'lucide-react';
+import { Playlist } from '../types';
+import { playlistsService } from '../services/music.service';
 import { useAuth } from '../contexts/AuthContext';
 import { usePlayer } from '../contexts/PlayerContext';
 import PlaylistCard from '../components/playlist/PlaylistCard';
@@ -14,14 +14,24 @@ export default function Playlists() {
   const { user } = useAuth();
   const { playSong, setQueue } = usePlayer();
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [playlists, setPlaylists] = useState<Playlist[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [showModal, setShowModal] = useState(searchParams.get('new') === 'true');
+  const [showModal, setShowModal] = useState(false);
   const [editingPlaylist, setEditingPlaylist] = useState<Playlist | null>(null);
   const [activeTab, setActiveTab] = useState<'my' | 'public'>('my');
 
-  const load = async () => {
+  // Check for ?new=true on mount/change, then clear it
+  useEffect(() => {
+    if (searchParams.get('new') === 'true') {
+      setShowModal(true);
+      const newParams = new URLSearchParams(searchParams);
+      newParams.delete('new');
+      setSearchParams(newParams, { replace: true });
+    }
+  }, [searchParams, setSearchParams]);
+
+  const load = useCallback(async () => {
     try {
       const res = user
         ? await playlistsService.getByUser(user.id)
@@ -30,9 +40,9 @@ export default function Playlists() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [user]);
 
-  useEffect(() => { load(); }, [user]);
+  useEffect(() => { load(); }, [load]);
 
   const handleDelete = async (id: string) => {
     if (!confirm('Bạn có chắc muốn xóa playlist này?')) return;
@@ -41,12 +51,28 @@ export default function Playlists() {
     toast.success('Đã xóa playlist');
   };
 
+  const handleOpenCreate = () => {
+    setEditingPlaylist(null);
+    setShowModal(true);
+  };
+
+  const handleOpenEdit = (playlist: Playlist) => {
+    setEditingPlaylist(playlist);
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setEditingPlaylist(null);
+  };
+
   const handleSave = (saved: Playlist) => {
     setPlaylists(prev => {
       const idx = prev.findIndex(p => p.id === saved.id);
       if (idx >= 0) { const arr = [...prev]; arr[idx] = saved; return arr; }
       return [saved, ...prev];
     });
+    handleCloseModal();
   };
 
   const myPlaylists = playlists.filter(p => p.userId === user?.id);
@@ -63,7 +89,7 @@ export default function Playlists() {
         </div>
         {user && (
           <button
-            onClick={() => { setEditingPlaylist(null); setShowModal(true); }}
+            onClick={handleOpenCreate}
             className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all hover:scale-105"
             style={{ background: '#2c2c2c', color: '#fff9ec' }}
           >
@@ -115,7 +141,7 @@ export default function Playlists() {
                     Tạo playlist đầu tiên của bạn ngay hôm nay
                   </p>
                   <button
-                    onClick={() => setShowModal(true)}
+                    onClick={handleOpenCreate}
                     className="px-6 py-3 rounded-xl font-semibold"
                     style={{ background: '#2c2c2c', color: '#fff9ec' }}
                   >
@@ -129,13 +155,11 @@ export default function Playlists() {
                       <PlaylistCard
                         playlist={pl}
                         index={i}
-                        onEdit={p => { setEditingPlaylist(p); setShowModal(true); }}
-                        onDelete={handleDelete}
                       />
                       {/* Quick actions overlay */}
-                      <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity z-10">
                         <button
-                          onClick={e => { e.stopPropagation(); setEditingPlaylist(pl); setShowModal(true); }}
+                          onClick={e => { e.stopPropagation(); handleOpenEdit(pl); }}
                           className="p-1.5 rounded-lg shadow-card"
                           style={{ background: '#fff9ec' }}
                         >
@@ -168,7 +192,7 @@ export default function Playlists() {
       {showModal && (
         <PlaylistModal
           playlist={editingPlaylist}
-          onClose={() => { setShowModal(false); setEditingPlaylist(null); }}
+          onClose={handleCloseModal}
           onSave={handleSave}
         />
       )}
