@@ -1,11 +1,24 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Music, Lock, Globe } from 'lucide-react';
+import { X, Music, Lock, Globe, Image } from 'lucide-react';
 import { Playlist } from '../../types';
 import { playlistsService } from '../../services/music.service';
 import { useAuth } from '../../contexts/AuthContext';
 import { generateId } from '../../utils/helpers';
 import toast from 'react-hot-toast';
+
+const DEFAULT_COVERS = [
+  'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1506157786151-b8491531f063?w=400&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=400&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=400&fit=crop',
+];
+
+function getDefaultCover(): string {
+  return DEFAULT_COVERS[Math.floor(Math.random() * DEFAULT_COVERS.length)];
+}
 
 interface PlaylistModalProps {
   playlist?: Playlist | null;
@@ -17,13 +30,19 @@ export default function PlaylistModal({ playlist, onClose, onSave }: PlaylistMod
   const { user } = useAuth();
   const [title, setTitle] = useState(playlist?.title || '');
   const [description, setDescription] = useState(playlist?.description || '');
+  const [coverUrl, setCoverUrl] = useState(playlist?.cover || '');
   const [isPublic, setIsPublic] = useState(playlist?.isPublic ?? true);
   const [isLoading, setIsLoading] = useState(false);
+  const [coverError, setCoverError] = useState(false);
+
+  const previewCover = coverUrl.trim() || '';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user || !title.trim()) return;
     setIsLoading(true);
+
+    const finalCover = coverUrl.trim() || getDefaultCover();
 
     try {
       if (playlist) {
@@ -31,6 +50,7 @@ export default function PlaylistModal({ playlist, onClose, onSave }: PlaylistMod
         const res = await playlistsService.update(playlist.id, {
           title: title.trim(),
           description: description.trim(),
+          cover: finalCover,
           isPublic,
           updatedAt: new Date().toISOString(),
         });
@@ -41,7 +61,7 @@ export default function PlaylistModal({ playlist, onClose, onSave }: PlaylistMod
         const newPlaylist: Omit<Playlist, 'id'> = {
           title: title.trim(),
           description: description.trim(),
-          cover: `https://images.unsplash.com/photo-${Math.floor(Math.random() * 9e8) + 1e9}?w=400&h=400&fit=crop`,
+          cover: finalCover,
           userId: user.id,
           songIds: [],
           isPublic,
@@ -55,7 +75,6 @@ export default function PlaylistModal({ playlist, onClose, onSave }: PlaylistMod
         onSave(res.data);
         toast.success('Đã tạo playlist mới');
       }
-      onClose();
     } catch {
       toast.error('Đã xảy ra lỗi');
     } finally {
@@ -78,11 +97,11 @@ export default function PlaylistModal({ playlist, onClose, onSave }: PlaylistMod
           animate={{ scale: 1, y: 0 }}
           exit={{ scale: 0.9, y: 20 }}
           onClick={e => e.stopPropagation()}
-          className="w-full max-w-md rounded-2xl shadow-float overflow-hidden"
+          className="w-full max-w-md rounded-2xl shadow-float overflow-hidden max-h-[90vh] flex flex-col"
           style={{ background: '#fff9ec' }}
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-6 py-5 border-b"
+          <div className="flex items-center justify-between px-6 py-5 border-b flex-shrink-0"
             style={{ borderColor: '#ede3bd' }}>
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center"
@@ -99,7 +118,7 @@ export default function PlaylistModal({ playlist, onClose, onSave }: PlaylistMod
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="px-6 py-5 space-y-4">
+          <form onSubmit={handleSubmit} className="px-6 py-5 space-y-4 overflow-y-auto">
             <div>
               <label className="block text-sm font-medium mb-2" style={{ color: '#383318' }}>
                 Tên Playlist *
@@ -130,6 +149,52 @@ export default function PlaylistModal({ playlist, onClose, onSave }: PlaylistMod
                 style={{ background: '#f2e8c7', color: '#383318' }}
                 maxLength={200}
               />
+            </div>
+
+            {/* Cover URL */}
+            <div>
+              <label className="block text-sm font-medium mb-2" style={{ color: '#383318' }}>
+                <div className="flex items-center gap-1.5">
+                  <Image size={14} />
+                  Ảnh bìa (URL)
+                </div>
+              </label>
+              <input
+                type="url"
+                value={coverUrl}
+                onChange={e => { setCoverUrl(e.target.value); setCoverError(false); }}
+                placeholder="https://example.com/image.jpg (để trống dùng ảnh mặc định)"
+                className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all border-ghost"
+                style={{ background: '#f2e8c7', color: '#383318' }}
+              />
+
+              {/* Cover preview */}
+              <div className="mt-3 flex items-center gap-3">
+                <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0"
+                  style={{ background: '#ede3bd' }}>
+                  {previewCover && !coverError ? (
+                    <img
+                      src={previewCover}
+                      alt="Preview"
+                      className="w-full h-full object-cover"
+                      onError={() => setCoverError(true)}
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-2xl">
+                      🎵
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <p className="text-xs" style={{ color: '#665f41' }}>
+                    {previewCover && !coverError
+                      ? 'Xem trước ảnh bìa'
+                      : coverError
+                        ? 'URL ảnh không hợp lệ, sẽ dùng ảnh mặc định'
+                        : 'Sẽ sử dụng ảnh mặc định'}
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Visibility toggle */}

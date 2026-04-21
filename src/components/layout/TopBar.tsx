@@ -92,9 +92,7 @@ export default function TopBar() {
       }}>
 
       {/* Page title (hidden on small, shown on lg) */}
-      <h1 className="hidden lg:block text-lg font-bold" style={{ color: '#383318' }}>
-        
-      </h1>
+      <div></div>
 
       {/* Search bar */}
       <div ref={searchRef} className="relative flex-1 max-w-md mx-4">
