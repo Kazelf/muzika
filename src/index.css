@@ -1,111 +1,318 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+/* ============================================
+   THE QUIET GALLERY - Design System
+   Muzika Color Palette & Tokens
+   ============================================ */
+@theme {
+  /* === Colors from Stitch "The Quiet Gallery" === */
+  --color-surface: #fff9ec;
+  --color-surface-bright: #fff9ec;
+  --color-surface-container: #f6eed2;
+  --color-surface-container-low: #fbf3dd;
+  --color-surface-container-high: #f2e8c7;
+  --color-surface-container-highest: #ede3bd;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-dim: #e5daaf;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --color-primary: #2c2c2c;
+  --color-primary-dim: #535252;
+  --color-primary-container: #e4e2e1;
+  --color-on-primary: #faf7f6;
+  --color-on-primary-container: #525151;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --color-secondary: #5e5f63;
+  --color-secondary-container: #e3e2e7;
+  --color-on-secondary: #f9f8fe;
+
+  --color-tertiary: #486272;
+  --color-tertiary-container: #d0ecff;
+  --color-on-tertiary: #f4faff;
+
+  --color-on-surface: #383318;
+  --color-on-surface-variant: #665f41;
+  --color-outline: #827b5b;
+  --color-outline-variant: #bbb28f;
+
+  --color-error: #9f403d;
+  --color-error-container: #fe8983;
+  --color-on-error: #fff7f6;
+
+  /* === Typography === */
+  --font-sans: 'Manrope', system-ui, sans-serif;
+
+  /* === Border Radius === */
+  --radius-sm: 0.25rem;   /* 4px */
+  --radius-md: 0.5rem;    /* 8px */
+  --radius-lg: 1rem;      /* 16px */
+  --radius-xl: 1.5rem;    /* 24px */
+  --radius-full: 9999px;
+
+  /* === Shadows (Ambient, no harsh shadows) === */
+  --shadow-ambient: 0 12px 40px rgba(56, 51, 24, 0.05);
+  --shadow-card: 0 4px 20px rgba(56, 51, 24, 0.06);
+  --shadow-float: 0 8px 32px rgba(56, 51, 24, 0.10);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
+/* ============================================
+   BASE STYLES
+   ============================================ */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  margin: 0;
+  font-family: 'Manrope', system-ui, sans-serif;
+  background-color: #fff9ec;
+  color: #383318;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+::-webkit-scrollbar-thumb {
+  background: #bbb28f;
+  border-radius: 9999px;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+::-webkit-scrollbar-thumb:hover {
+  background: #827b5b;
+}
+
+/* ============================================
+   CUSTOM UTILITY CLASSES
+   ============================================ */
+
+/* Glass morphism */
+.glass {
+  background: rgba(255, 249, 236, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.glass-dark {
+  background: rgba(44, 44, 44, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* Ambient shadow */
+.shadow-ambient {
+  box-shadow: 0 12px 40px rgba(56, 51, 24, 0.05);
+}
+
+.shadow-card {
+  box-shadow: 0 4px 20px rgba(56, 51, 24, 0.06);
+}
+
+.shadow-float {
+  box-shadow: 0 8px 32px rgba(56, 51, 24, 0.12);
+}
+
+/* Ghost border (subtle) */
+.border-ghost {
+  border: 1px solid rgba(187, 178, 143, 0.2);
+}
+
+/* ============================================
+   PLAYER PROGRESS BAR
+   ============================================ */
+.progress-bar {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 9999px;
+  background: rgba(187, 178, 143, 0.35);
+  outline: none;
+  cursor: pointer;
+  transition: height 0.15s ease;
+}
+
+.progress-bar:hover {
+  height: 6px;
+}
+
+.progress-bar::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #2c2c2c;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.progress-bar::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.progress-bar::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #2c2c2c;
+  cursor: pointer;
+  border: none;
+}
+
+/* Volume slider */
+.volume-bar {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 80px;
+  height: 4px;
+  border-radius: 9999px;
+  background: rgba(187, 178, 143, 0.35);
+  outline: none;
+  cursor: pointer;
+}
+
+.volume-bar::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #2c2c2c;
+  cursor: pointer;
+}
+
+.volume-bar::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #2c2c2c;
+  cursor: pointer;
+  border: none;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+/* Vinyl disc animation */
+.vinyl-disc {
+  border-radius: 50%;
+  animation: spin-slow 8s linear infinite;
+  animation-play-state: paused;
+}
+
+.vinyl-disc.playing {
+  animation-play-state: running;
+}
+
+/* ============================================
+   LYRICS KARAOKE HIGHLIGHT
+   ============================================ */
+.lyric-line {
+  transition: all 0.4s ease;
+  opacity: 0.4;
+}
+
+.lyric-line.active {
+  opacity: 1;
+  color: #2c2c2c;
+  font-weight: 700;
+  transform: scale(1.02);
+}
+
+/* ============================================
+   CARD HOVER EFFECTS
+   ============================================ */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(56, 51, 24, 0.10);
+}
+
+/* ============================================
+   SIDEBAR ACTIVE STATE
+   ============================================ */
+.nav-item {
+  transition: all 0.2s ease;
+  border-radius: 0.75rem;
+}
+
+.nav-item:hover {
+  background: #f2e8c7;
+}
+
+.nav-item.active {
+  background: #ede3bd;
+  color: #2c2c2c;
+  font-weight: 600;
+}
+
+/* ============================================
+   LINE CLAMP UTILITIES
+   ============================================ */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
