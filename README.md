@@ -1,73 +1,91 @@
-# React + TypeScript + Vite
+# 🎵 Muzika
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Muzika is a responsive, minimalist music web application designed with "The Quiet Gallery" design system. It features a full-featured music player, comprehensive playlist management, real-time search, and a beautiful user interface built with React, TypeScript, and Tailwind CSS v4.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Full-Featured Music Player:** Seamless playback with play, pause, skip, progress tracking, and volume control.
+- **Playlist Management:** Create, edit, and delete playlists. Add custom cover images and manage your favorite tracks.
+- **Discover & Library:** Explore new music, browse curated content, and manage your personal music library.
+- **Real-Time Search:** Instantly find your favorite songs, artists, or albums with fuzzy matching.
+- **User Authentication:** Secure login and registration.
+- **Minimalist UI:** Built on "The Quiet Gallery" design principles for a distraction-free, desktop-first, yet fully responsive experience.
+- **Lyric Synchronization:** Follow along with your favorite songs.
 
-## React Compiler
+## 🚀 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend Framework:** React 19 + TypeScript
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS v4
+- **Animations:** Framer Motion
+- **Icons:** Lucide React
+- **Routing:** React Router v7
+- **Mock Backend:** `json-server` (for REST API simulation)
 
-## Expanding the ESLint configuration
+## 🛠️ Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Make sure you have [Node.js](https://nodejs.org/) (version 18 or higher recommended) installed on your machine.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone the repository:
+
+   ```bash
+   git clone <repository-url>
+   cd muzika
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the mock backend server:
+
+   ```bash
+   npm run server
+   ```
+   *This will run `json-server` on port 9999, using `db.json` as the database.*
+
+4. In a separate terminal, start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:5173](http://localhost:5173) in your browser to view the application.
+
+## 📂 Project Structure
+
+```text
+src/
+├── components/      # Reusable UI components (Player, Sidebar, Modals, etc.)
+├── contexts/        # React context providers (Auth, Player)
+├── pages/           # Main application pages (Discover, Playlists, Search, etc.)
+├── types/           # TypeScript interfaces and types
+├── App.tsx          # Main application component and routing
+└── main.tsx         # Entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📜 Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `npm run dev`: Starts the Vite development server.
+- `npm run server`: Starts the `json-server` mock API on port 9999.
+- `npm run build`: Compiles TypeScript and builds the app for production.
+- `npm run preview`: Previews the production build locally.
+- `npm run lint`: Runs ESLint to check for code quality issues.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🎨 Design System
+
+Muzika is built on **The Quiet Gallery** design system, focusing on:
+- **Simplicity:** Removing unnecessary elements to focus on the music.
+- **Typography:** Clear and readable fonts for easy navigation.
+- **Whitespace:** Ample breathing room between elements for a clean look.
+- **Responsiveness:** Fluid layouts that adapt gracefully to different screen sizes.
+
+---
+
+*Made with ❤️ for music lovers.*
