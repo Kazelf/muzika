@@ -33,10 +33,24 @@ export default function Playlists() {
 
   const load = useCallback(async () => {
     try {
-      const res = user
-        ? await playlistsService.getByUser(user.id)
-        : await playlistsService.getPublic();
-      setPlaylists(res.data);
+      if (user) {
+        // Fetch both user's playlists and public playlists
+        const [userRes, publicRes] = await Promise.all([
+          playlistsService.getByUser(user.id),
+          playlistsService.getPublic(),
+        ]);
+        // Merge and deduplicate by id
+        const merged = [...userRes.data];
+        publicRes.data.forEach((p: Playlist) => {
+          if (!merged.find(m => m.id === p.id)) {
+            merged.push(p);
+          }
+        });
+        setPlaylists(merged);
+      } else {
+        const res = await playlistsService.getPublic();
+        setPlaylists(res.data);
+      }
     } finally {
       setIsLoading(false);
     }
@@ -119,7 +133,7 @@ export default function Playlists() {
             color: activeTab === 'public' ? '#fff9ec' : '#665f41',
           }}
         >
-          Cộng Đồng
+          Cộng Đồng ({publicPlaylists.length})
         </button>
       </div>
 
@@ -179,11 +193,25 @@ export default function Playlists() {
               )}
             </>
           ) : (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-              {publicPlaylists.map((pl, i) => (
-                <PlaylistCard key={pl.id} playlist={pl} index={i} />
-              ))}
-            </div>
+            <>
+              {publicPlaylists.length === 0 ? (
+                <div className="text-center py-20">
+                  <p className="text-5xl mb-4">🌍</p>
+                  <p className="font-semibold text-lg" style={{ color: '#383318' }}>
+                    Chưa có playlist cộng đồng
+                  </p>
+                  <p className="text-sm mt-2" style={{ color: '#665f41' }}>
+                    Các playlist công khai từ người dùng khác sẽ xuất hiện ở đây
+                  </p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                  {publicPlaylists.map((pl, i) => (
+                    <PlaylistCard key={pl.id} playlist={pl} index={i} />
+                  ))}
+                </div>
+              )}
+            </>
           )}
         </div>
       )}
