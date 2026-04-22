@@ -6,6 +6,7 @@ import { usePlayer } from '../../contexts/PlayerContext';
 import { useAuth } from '../../contexts/AuthContext';
 import { likesService } from '../../services/music.service';
 import { formatTime } from '../../utils/helpers';
+import AddToPlaylistModal from '../playlist/AddToPlaylistModal';
 
 interface SongRowProps {
   song: Song;
@@ -21,6 +22,7 @@ export default function SongRow({ song, index, queue, showIndex = true, onAddToP
   const [isLiked, setIsLiked] = useState(false);
   const [likeId, setLikeId] = useState<string | null>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
 
   const isActive = currentSong?.id === song.id;
 
@@ -63,7 +65,7 @@ export default function SongRow({ song, index, queue, showIndex = true, onAddToP
     >
       {/* Index / Play indicator */}
       {showIndex && (
-        <div className="w-6 text-center flex-shrink-0">
+        <div className="w-6 text-center shrink-0">
           {isActive && isPlaying ? (
             <div className="flex justify-center gap-0.5">
               {[1,2,3].map(i => (
@@ -87,7 +89,7 @@ export default function SongRow({ song, index, queue, showIndex = true, onAddToP
       <img
         src={song.cover}
         alt={song.title}
-        className="w-10 h-10 rounded-lg object-cover flex-shrink-0"
+        className="w-10 h-10 rounded-lg object-cover shrink-0"
       />
 
       {/* Song info */}
@@ -110,7 +112,7 @@ export default function SongRow({ song, index, queue, showIndex = true, onAddToP
       <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
         <button
           onClick={toggleLike}
-          className="p-1.5 rounded-lg hover:bg-[#ede3bd] transition-colors"
+          className="p-1.5 rounded-lg hover:bg-surface-container transition-colors"
         >
           <Heart
             size={14}
@@ -119,15 +121,15 @@ export default function SongRow({ song, index, queue, showIndex = true, onAddToP
           />
         </button>
         <button
-          onClick={e => { e.stopPropagation(); addToQueue(song); }}
-          className="p-1.5 rounded-lg hover:bg-[#ede3bd] transition-colors"
+          onClick={e => { e.stopPropagation(); setShowAddModal(true); }}
+          className="p-1.5 rounded-lg hover:bg-surface-container transition-colors"
         >
           <Plus size={14} style={{ color: '#827b5b' }} />
         </button>
         {onAddToPlaylist && (
           <button
             onClick={e => { e.stopPropagation(); onAddToPlaylist(song); }}
-            className="p-1.5 rounded-lg hover:bg-[#ede3bd] transition-colors"
+            className="p-1.5 rounded-lg hover:bg-surface-container-highest transition-colors"
           >
             <MoreHorizontal size={14} style={{ color: '#827b5b' }} />
           </button>
@@ -135,9 +137,11 @@ export default function SongRow({ song, index, queue, showIndex = true, onAddToP
       </div>
 
       {/* Duration */}
-      <span className="text-xs ml-2 flex-shrink-0" style={{ color: '#bbb28f' }}>
+      <span className="text-xs ml-2 shrink-0" style={{ color: '#bbb28f' }}>
         {formatTime(song.duration)}
       </span>
+
+      {showAddModal && <AddToPlaylistModal song={song} onClose={() => setShowAddModal(false)} />}
     </motion.div>
   );
 }

@@ -3,6 +3,9 @@ import { Song } from '../../types';
 import { usePlayer } from '../../contexts/PlayerContext';
 import { formatTime } from '../../utils/helpers';
 import { motion } from 'framer-motion';
+import { Plus } from 'lucide-react';
+import { useState } from 'react';
+import AddToPlaylistModal from '../playlist/AddToPlaylistModal';
 
 interface SongCardProps {
   song: Song;
@@ -12,6 +15,7 @@ interface SongCardProps {
 
 export default function SongCard({ song, queue, index }: SongCardProps) {
   const { playSong, currentSong, isPlaying } = usePlayer();
+  const [showAddModal, setShowAddModal] = useState(false);
   const isActive = currentSong?.id === song.id;
 
   return (
@@ -70,6 +74,17 @@ export default function SongCard({ song, queue, index }: SongCardProps) {
               : <Play size={16} style={{ color: '#2c2c2c' }} className="ml-0.5" />
             }
           </div>
+          <button 
+            onClick={e => { e.stopPropagation(); setShowAddModal(true); }}
+            className="play-btn absolute top-2 right-2 w-8 h-8 rounded-full flex items-center justify-center bg-primary hover:scale-110"
+            style={{
+              opacity: 0,
+              transform: 'scale(0.8)',
+              transition: 'all 0.2s',
+            }}
+          >
+            <Plus size={14} color="#fff9ec" />
+          </button>
         </div>
 
         {/* Trending badge */}
@@ -94,6 +109,8 @@ export default function SongCard({ song, queue, index }: SongCardProps) {
           <span className="text-xs" style={{ color: '#bbb28f' }}>{formatTime(song.duration)}</span>
         </div>
       </div>
+      
+      {showAddModal && <AddToPlaylistModal song={song} onClose={() => setShowAddModal(false)} />}
     </motion.div>
   );
 }

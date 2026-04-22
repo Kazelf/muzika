@@ -1,3 +1,4 @@
+import axios from 'axios';
 import api from './api';
 import { Song, Artist, Album, Playlist, SearchResults } from '../types';
 
@@ -9,6 +10,15 @@ export const songsService = {
   getByMood: (mood: string) => api.get<Song[]>(`/songs?mood=${mood}`),
   incrementPlay: (id: string, currentCount: number) =>
     api.patch(`/songs/${id}`, { playCount: currentCount + 1 }),
+  uploadAudio: (file: File) => {
+    const formData = new FormData();
+    formData.append('audio', file);
+    return axios.post<{ url: string, lyrics?: string }>('http://localhost:9999/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
+  },
 };
 
 export const artistsService = {

@@ -96,7 +96,7 @@
           "text": "🎵 Instrumental"
         }
       ],
-      "playCount": 2103,
+      "playCount": 2101,
       "trending": true,
       "createdAt": "2024-01-03T00:00:00Z"
     },
@@ -165,7 +165,7 @@
           "text": "🎵 Instrumental"
         }
       ],
-      "playCount": 1895,
+      "playCount": 1892,
       "trending": true,
       "createdAt": "2024-01-06T00:00:00Z"
     },
@@ -188,7 +188,7 @@
           "text": "🎵 Instrumental"
         }
       ],
-      "playCount": 3206,
+      "playCount": 3205,
       "trending": true,
       "createdAt": "2024-01-07T00:00:00Z"
     },
@@ -234,7 +234,7 @@
           "text": "🎵 Instrumental"
         }
       ],
-      "playCount": 2453,
+      "playCount": 2452,
       "trending": true,
       "createdAt": "2024-01-09T00:00:00Z"
     },
@@ -375,193 +375,6 @@
       "playCount": 3457,
       "trending": true,
       "createdAt": "2024-01-15T00:00:00Z"
-    },
-    {
-      "title": "Nàng thơ",
-      "artist": "Hoàng Dũng",
-      "cover": "https://image-cdn.nct.vn/song/2020/07/31/c/5/8/9/1596188259603_300.jpg",
-      "url": "/music/1776830531452-747412023.mp3",
-      "duration": 254,
-      "genre": "Pop",
-      "mood": "happy",
-      "id": "s1776830531478",
-      "artistId": "a1",
-      "albumId": "al1",
-      "album": "Single",
-      "lyrics": [
-        {
-          "time": 16.64,
-          "text": "Em, ngày em đánh rơi nụ cười vào anh"
-        },
-        {
-          "time": 22.81,
-          "text": "Có nghĩ sau này em sẽ chờ"
-        },
-        {
-          "time": 26.51,
-          "text": "Và vô tư cho đi hết những ngây thơ"
-        },
-        {
-          "time": 32.18,
-          "text": "Anh, một người hát mãi những điều mong manh"
-        },
-        {
-          "time": 38.31,
-          "text": "Lang thang tìm niềm vui đã lỡ"
-        },
-        {
-          "time": 42.36,
-          "text": "Chẳng buồn dặn lòng quên hết những chơ vơ"
-        },
-        {
-          "time": 47.75,
-          "text": "Ta yêu nhau bằng nỗi nhớ chưa khô trên những bức thư"
-        },
-        {
-          "time": 55.76,
-          "text": "Ta đâu bao giờ có lỗi khi không nghe tim chối từ"
-        },
-        {
-          "time": 63.45,
-          "text": "Chỉ tiếc rằng"
-        },
-        {
-          "time": 69.78999999999999,
-          "text": "Em không là nàng thơ"
-        },
-        {
-          "time": 73.33,
-          "text": "Anh cũng không còn là nhạc sĩ mộng mơ"
-        },
-        {
-          "time": 78.23,
-          "text": "Tình này nhẹ như gió"
-        },
-        {
-          "time": 81.03999999999999,
-          "text": "Lại trĩu lên tim ta những vết hằn"
-        },
-        {
-          "time": 85.38,
-          "text": "Tiếng yêu này mỏng manh"
-        },
-        {
-          "time": 88.84,
-          "text": "Giờ tan vỡ, thôi cũng đành"
-        },
-        {
-          "time": 93.21000000000001,
-          "text": "Xếp riêng những ngày tháng hồn nhiên"
-        },
-        {
-          "time": 98.82,
-          "text": "Trả lại..."
-        },
-        {
-          "time": 104.83,
-          "text": ""
-        },
-        {
-          "time": 118.93,
-          "text": "Mai, rồi em sẽ quên ngày mình khờ dại"
-        },
-        {
-          "time": 124.88,
-          "text": "Mong em kỷ niệm này cất lại"
-        },
-        {
-          "time": 128.77,
-          "text": "Mong em ngày buồn thôi ướt đẫm trên vai"
-        },
-        {
-          "time": 134.35,
-          "text": "Mai, ngày em sải bước bên đời thênh thang"
-        },
-        {
-          "time": 140.3,
-          "text": "Chỉ cần một điều em hãy nhớ"
-        },
-        {
-          "time": 143.32999999999998,
-          "text": "Có một người từng yêu em tha thiết vô bờ"
-        },
-        {
-          "time": 147.98,
-          "text": "Em không là nàng thơ"
-        },
-        {
-          "time": 151.56,
-          "text": "Anh cũng không còn là nhạc sĩ mộng mơ"
-        },
-        {
-          "time": 156.16,
-          "text": "Tình này nhẹ như gió"
-        },
-        {
-          "time": 159.32999999999998,
-          "text": "Lại trĩu lên tim ta những vết hằn"
-        },
-        {
-          "time": 163.46,
-          "text": "Tiếng yêu này mỏng manh"
-        },
-        {
-          "time": 166.65,
-          "text": "Giờ tan vỡ, thôi cũng đành"
-        },
-        {
-          "time": 170.91,
-          "text": "Xếp riêng những ngày tháng hồn nhiên"
-        },
-        {
-          "time": 176.26,
-          "text": "Trả hết cho em"
-        },
-        {
-          "time": 184.79,
-          "text": ""
-        },
-        {
-          "time": 194.37,
-          "text": "Em không là nàng thơ"
-        },
-        {
-          "time": 197.82,
-          "text": "Anh cũng không còn là nhạc sĩ mộng mơ"
-        },
-        {
-          "time": 202.89,
-          "text": "Tình này nhẹ như gió"
-        },
-        {
-          "time": 205.46,
-          "text": "Lại trĩu lên tim ta những vết hằn"
-        },
-        {
-          "time": 209.91,
-          "text": "Tiếng yêu này mỏng manh"
-        },
-        {
-          "time": 213.13,
-          "text": "Giờ tan vỡ, thôi cũng đành"
-        },
-        {
-          "time": 217.41,
-          "text": "Xếp riêng những ngày tháng hồn nhiên"
-        },
-        {
-          "time": 222.68,
-          "text": "Trả hết cho em"
-        },
-        {
-          "time": 232.07999999999998,
-          "text": ""
-        }
-      ],
-      "playCount": 4,
-      "trending": false,
-      "year": 2026,
-      "createdAt": "2026-04-22T04:02:11.478Z"
     }
   ],
   "artists": [
@@ -1081,90 +894,6 @@
       "playedAt": "2026-04-22T03:40:02.351Z",
       "duration": 195,
       "id": "h1776829202351"
-    },
-    {
-      "userId": "u1",
-      "songId": "s3",
-      "playedAt": "2026-04-22T03:42:26.622Z",
-      "duration": 222,
-      "id": "h1776829346622"
-    },
-    {
-      "userId": "u1",
-      "songId": "s6",
-      "playedAt": "2026-04-22T03:46:02.867Z",
-      "duration": 207,
-      "id": "h1776829562867"
-    },
-    {
-      "userId": "u1",
-      "songId": "s1776830531478",
-      "playedAt": "2026-04-22T04:02:20.065Z",
-      "duration": 254,
-      "id": "h1776830540065"
-    },
-    {
-      "userId": "u1",
-      "songId": "s1776830531478",
-      "playedAt": "2026-04-22T04:02:53.712Z",
-      "duration": 254,
-      "id": "h1776830573712"
-    },
-    {
-      "userId": "u1",
-      "songId": "s6",
-      "playedAt": "2026-04-22T04:12:02.457Z",
-      "duration": 207,
-      "id": "h1776831122457"
-    },
-    {
-      "userId": "u1",
-      "songId": "s1776830531478",
-      "playedAt": "2026-04-22T04:12:04.759Z",
-      "duration": 254,
-      "id": "h1776831124759"
-    },
-    {
-      "userId": "u1",
-      "songId": "s1776830531478",
-      "playedAt": "2026-04-22T04:13:25.897Z",
-      "duration": 254,
-      "id": "h1776831205897"
-    },
-    {
-      "userId": "u1",
-      "songId": "s6",
-      "playedAt": "2026-04-22T04:18:14.656Z",
-      "duration": 207,
-      "id": "h1776831494656"
-    },
-    {
-      "userId": "u1",
-      "songId": "s3",
-      "playedAt": "2026-04-22T04:20:39.040Z",
-      "duration": 222,
-      "id": "h1776831639040"
-    },
-    {
-      "userId": "u1",
-      "songId": "s1776830531478",
-      "playedAt": "2026-04-22T04:22:16.529Z",
-      "duration": 254,
-      "id": "h1776831736529"
-    },
-    {
-      "userId": "u1",
-      "songId": "s9",
-      "playedAt": "2026-04-22T04:24:09.759Z",
-      "duration": 195,
-      "id": "h1776831849759"
-    },
-    {
-      "userId": "u1",
-      "songId": "s7",
-      "playedAt": "2026-04-22T04:26:34.095Z",
-      "duration": 228,
-      "id": "h1776831994095"
     }
   ],
   "likes": [

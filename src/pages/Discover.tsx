@@ -15,7 +15,7 @@ const MOODS = ['calm', 'energetic', 'happy', 'sad', 'romantic'] as const;
 
 export default function Discover() {
   const { user } = useAuth();
-  const { playSong } = usePlayer();
+  const { playSong, currentSong } = usePlayer();
   const navigate = useNavigate();
   const [allSongs, setAllSongs] = useState<Song[]>([]);
   const [trending, setTrending] = useState<Song[]>([]);
@@ -36,18 +36,14 @@ export default function Discover() {
           songsService.getTrending(),
         ]);
         setAllSongs(songsRes.data);
+        // trendingRes from API is already sorted by playCount descending
         setTrending(trendingRes.data.slice(0, 6));
 
         if (user) {
-          const [historyRes, likesRes] = await Promise.all([
-            historyService.getByUser(user.id),
-            likesService.getByUser(user.id),
-          ]);
-          const likedIds = likesRes.data.map((l: any) => l.songId);
-          const recs = getRecommendations(historyRes.data, songsRes.data, likedIds, 6);
-          setRecommendations(recs);
-
-          // Recent: get unique songs from history
+          const historyRes = await historyService.getByUser(user.id);
+          
+          // Recent: get unique songs from history ordered strictly by the most recent playedAt
+          // historyRes is already sorted by playedAt desc by the API
           const seen = new Set<string>();
           const recentSongs: Song[] = [];
           for (const h of historyRes.data) {
@@ -72,6 +68,41 @@ export default function Discover() {
     load();
   }, [user]);
 
+  // Recommendations based on current song tag (genre)
+  useEffect(() => {
+    if (currentSong && allSongs.length > 0) {
+      const tag = currentSong.genre;
+      const recs = allSongs
+        .filter(s => s.genre === tag && s.id !== currentSong.id)
+        .slice(0, 6)
+        .map(song => ({
+          song,
+          score: 1,
+          reason: `Cùng thể loại ${tag}`
+        }));
+      setRecommendations(recs);
+    } else if (!currentSong && allSongs.length > 0 && user) {
+      // Fallback if no song is playing (fetch based on history as before)
+      historyService.getByUser(user.id).then(historyRes => {
+        likesService.getByUser(user.id).then(likesRes => {
+          const likedIds = likesRes.data.map((l: any) => l.songId);
+          const recs = getRecommendations(historyRes.data, allSongs, likedIds, 6);
+          setRecommendations(recs);
+        });
+      });
+    }
+  }, [currentSong, allSongs, user]);
+
+  // Update "Nghe gần đây" instantly when currentSong changes
+  useEffect(() => {
+    if (currentSong && !isLoading) {
+      setRecent(prev => {
+        const filtered = prev.filter(s => s.id !== currentSong.id);
+        return [currentSong, ...filtered].slice(0, 5);
+      });
+    }
+  }, [currentSong?.id, isLoading]);
+
   useEffect(() => {
     if (!selectedMood) { setMoodSongs([]); return; }
     const moods = getMoodRecommendations(selectedMood, allSongs, 6);
@@ -82,7 +113,7 @@ export default function Discover() {
     return (
       <div className="flex items-center justify-center h-64">
         <div className="text-center">
-          <div className="w-8 h-8 rounded-full animate-spin border-2 border-[#bbb28f] border-t-[#2c2c2c] mx-auto mb-3" />
+          <div className="w-8 h-8 rounded-full animate-spin border-2 border-outline-variant border-t-primary mx-auto mb-3" />
           <p className="text-sm" style={{ color: '#665f41' }}>Đang tải nhạc...</p>
         </div>
       </div>

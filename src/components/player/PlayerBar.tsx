@@ -55,7 +55,7 @@ export default function PlayerBar() {
       <div className="flex items-center px-4 py-3 gap-4">
         {/* Song info */}
         <div
-          className="flex items-center gap-3 w-56 flex-shrink-0 cursor-pointer"
+          className="flex items-center gap-3 w-56 shrink-0 cursor-pointer"
           onClick={() => navigate('/now-playing')}
         >
           <img
@@ -87,7 +87,7 @@ export default function PlayerBar() {
             {/* Prev */}
             <button
               onClick={playPrev}
-              className="p-2 rounded-lg hover:bg-[#f2e8c7] transition-all"
+              className="p-2 rounded-lg hover:bg-surface-container-highest transition-all"
             >
               <SkipBack size={20} style={{ color: '#383318' }} />
             </button>
@@ -107,7 +107,7 @@ export default function PlayerBar() {
             {/* Next */}
             <button
               onClick={playNext}
-              className="p-2 rounded-lg hover:bg-[#f2e8c7] transition-all"
+              className="p-2 rounded-lg hover:bg-surface-container-highest transition-all"
             >
               <SkipForward size={20} style={{ color: '#383318' }} />
             </button>
@@ -137,7 +137,7 @@ export default function PlayerBar() {
         {/* Right controls */}
         <div className="flex items-center gap-2 w-48 justify-end">
           {/* Volume */}
-          <button onClick={toggleMute} className="p-1.5 hover:bg-[#f2e8c7] rounded-lg transition-all">
+          <button onClick={toggleMute} className="p-1.5 hover:bg-surface-container-highest rounded-lg transition-all">
             {isMuted || volume === 0
               ? <VolumeX size={16} style={{ color: '#665f41' }} />
               : <Volume2 size={16} style={{ color: '#665f41' }} />
@@ -151,12 +151,15 @@ export default function PlayerBar() {
             value={isMuted ? 0 : volume}
             onChange={e => setVolume(Number(e.target.value))}
             className="volume-bar hidden sm:block"
+            style={{
+              background: `linear-gradient(to right, #2c2c2c ${(isMuted ? 0 : volume) * 100}%, rgba(187,178,143,0.35) ${(isMuted ? 0 : volume) * 100}%)`,
+            }}
           />
 
           {/* Queue */}
           <button
             onClick={() => navigate('/now-playing?tab=queue')}
-            className="p-1.5 hover:bg-[#f2e8c7] rounded-lg transition-all"
+            className="p-1.5 hover:bg-surface-container-highest rounded-lg transition-all"
           >
             <ListMusic size={16} style={{ color: '#665f41' }} />
           </button>
@@ -164,7 +167,7 @@ export default function PlayerBar() {
           {/* Maximize (Now playing full page) */}
           <button
             onClick={() => navigate('/now-playing')}
-            className="p-1.5 hover:bg-[#f2e8c7] rounded-lg transition-all"
+            className="p-1.5 hover:bg-surface-container-highest rounded-lg transition-all"
           >
             <Maximize2 size={16} style={{ color: '#665f41' }} />
           </button>

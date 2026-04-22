@@ -12,6 +12,7 @@ import NowPlaying from './pages/NowPlaying';
 import Stats from './pages/Stats';
 import Social from './pages/Social';
 import Profile from './pages/Profile';
+import AdminDashboard from './pages/admin/AdminDashboard';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
 
@@ -21,7 +22,7 @@ function PrivateRoute({ children }: { children: React.ReactNode }) {
     return (
       <div className="flex items-center justify-center h-screen" style={{ background: '#fff9ec' }}>
         <div className="text-center">
-          <div className="w-10 h-10 rounded-full border-2 border-[#bbb28f] border-t-[#2c2c2c] animate-spin mx-auto mb-3" />
+          <div className="w-10 h-10 rounded-full border-2 border-outline-variant border-t-primary animate-spin mx-auto mb-3" />
           <p className="text-sm" style={{ color: '#665f41' }}>Muzika đang tải...</p>
         </div>
       </div>
@@ -52,6 +53,7 @@ function AppRoutes() {
         <Route path="stats" element={<Stats />} />
         <Route path="social" element={<Social />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="admin" element={<AdminDashboard />} />
       </Route>
 
       {/* Fallback */}

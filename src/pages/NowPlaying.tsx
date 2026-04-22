@@ -31,14 +31,15 @@ export default function NowPlaying() {
     });
   }, [user, currentSong?.id]);
 
-  // Auto-scroll lyrics
   useEffect(() => {
     if (!currentSong || !lyricsRef.current) return;
     const activeLine = lyricsRef.current.querySelector('.lyric-line.active');
     if (activeLine) {
       activeLine.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } else if (currentTime === 0 || (currentSong.lyrics.length > 0 && currentTime < currentSong.lyrics[0].time)) {
+      lyricsRef.current.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }, [currentTime]);
+  }, [currentTime, currentSong]);
 
   const toggleLike = async () => {
     if (!user || !currentSong) return;
@@ -71,7 +72,9 @@ export default function NowPlaying() {
   // Get active lyric
   const activeLyricIdx = currentSong.lyrics.reduce((acc, line, i) => {
     return currentTime >= line.time ? i : acc;
-  }, 0);
+  }, -1);
+
+  const hasLyrics = currentSong.lyrics.length > 0 && currentSong.lyrics[0].text !== "🎵 Instrumental";
 
   return (
     <div className="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto">
@@ -80,7 +83,7 @@ export default function NowPlaying() {
         {/* Header */}
         <div className="flex items-center justify-between w-full">
           <button onClick={() => navigate(-1)}
-            className="p-2 rounded-xl hover:bg-[#f2e8c7] transition-colors">
+            className="p-2 rounded-xl hover:bg-surface-container-high transition-colors">
             <ChevronDown size={20} style={{ color: '#665f41' }} />
           </button>
           <div className="text-center">
@@ -89,7 +92,7 @@ export default function NowPlaying() {
             </p>
           </div>
           <button onClick={toggleMiniPlayer}
-            className="p-2 rounded-xl hover:bg-[#f2e8c7] transition-colors">
+            className="p-2 rounded-xl hover:bg-surface-container-high transition-colors">
             <Minimize2 size={20} style={{ color: '#665f41' }} />
           </button>
         </div>
@@ -177,7 +180,7 @@ export default function NowPlaying() {
             <Shuffle size={18} style={{ color: '#2c2c2c' }} />
           </button>
           <button onClick={playPrev}
-            className="p-3 hover:bg-[#f2e8c7] rounded-full transition-all">
+            className="p-3 hover:bg-surface-container-high rounded-full transition-all">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="#383318">
               <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/>
             </svg>
@@ -198,7 +201,7 @@ export default function NowPlaying() {
             )}
           </button>
           <button onClick={playNext}
-            className="p-3 hover:bg-[#f2e8c7] rounded-full transition-all">
+            className="p-3 hover:bg-surface-container-high rounded-full transition-all">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="#383318">
               <path d="M6 18l8.5-6L6 6v12zm2.5-6 5.5 3.9V8.1L8.5 12zM16 6h2v12h-2z"/>
             </svg>
@@ -233,16 +236,45 @@ export default function NowPlaying() {
         </div>
 
         {tab === 'lyrics' ? (
-          <div ref={lyricsRef} className="space-y-4 overflow-y-auto max-h-96">
-            {currentSong.lyrics.map((line, i) => (
-              <p
-                key={i}
-                className={`lyric-line text-lg font-medium leading-relaxed ${i === activeLyricIdx ? 'active' : ''}`}
-                style={{ color: '#383318' }}
-              >
-                {line.text}
-              </p>
-            ))}
+          <div 
+            ref={lyricsRef} 
+            className="space-y-6 overflow-y-auto max-h-128 px-6 py-12 hide-scrollbar scroll-smooth"
+            style={{
+              maskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)',
+              WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)'
+            }}
+          >
+            {!hasLyrics ? (
+              <div className="flex flex-col items-center justify-center h-48 text-center">
+                <p className="text-lg font-medium" style={{ color: '#827b5b' }}>
+                  Lời bài hát hiện chưa khả dụng
+                </p>
+              </div>
+            ) : (
+              currentSong.lyrics.map((line, i) => {
+                const isActive = i === activeLyricIdx;
+                const isPassed = i < activeLyricIdx;
+                return (
+                  <p
+                    key={i}
+                    onClick={() => seekTo(line.time)}
+                    className={`text-lg lg:text-xl lyric-line text-center font-bold leading-relaxed cursor-pointer transition-all duration-500 transform origin-left
+                      ${isActive 
+                        ? 'active text-lg lg:text-xl scale-100 opacity-100 blur-0 font-extrabold' 
+                        : isPassed 
+                          ? 'text-lg lg:text-xl opacity-30 blur-[0.5px]' 
+                          : 'text-lg lg:text-xl opacity-20 hover:opacity-60 blur-[1px] hover:blur-none'}
+                    `}
+                    style={{ 
+                      color: isActive ? '#9f403d' : '#383318',
+                      textShadow: isActive ? '0 4px 20px rgba(159, 64, 61, 0.2)' : 'none'
+                    }}
+                  >
+                    {line.text}
+                  </p>
+                );
+              })
+            )}
           </div>
         ) : (
           <div className="space-y-1 overflow-y-auto max-h-96">

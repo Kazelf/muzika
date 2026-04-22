@@ -9,6 +9,7 @@ export interface User {
   following: string[];
   followers: string[];
   createdAt: string;
+  role?: 'admin' | 'user';
 }
 
 export interface LyricLine {

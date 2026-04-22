@@ -15,6 +15,9 @@ export default defineConfig({
   },
   server: {
     port: 5173,
+    watch: {
+      ignored: ['**/db.json']
+    },
     proxy: {
       '/api': {
         target: 'http://localhost:9999',

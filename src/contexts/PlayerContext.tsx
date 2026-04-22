@@ -2,8 +2,8 @@ import React, {
   createContext, useContext, useReducer, useRef, useEffect, useCallback
 } from 'react';
 import { Song, PlayerState, RepeatMode } from '../types';
-import { shuffle, clamp } from '../utils/helpers';
-import { historyService } from '../services/music.service';
+import { clamp } from '../utils/helpers';
+import { historyService, songsService } from '../services/music.service';
 import { useAuth } from './AuthContext';
 
 type PlayerAction =
@@ -53,6 +53,18 @@ function playerReducer(state: PlayerState, action: PlayerAction): PlayerState {
       return { ...state, isPlaying: action.playing };
     case 'NEXT': {
       if (!state.currentSong || state.queue.length === 0) return state;
+      if (state.isShuffle) {
+        // Pick random index different from current if possible
+        let nextIdx = Math.floor(Math.random() * state.queue.length);
+        if (state.queue.length > 1) {
+          const currentIdx = state.queue.findIndex(s => s.id === state.currentSong!.id);
+          while (nextIdx === currentIdx) {
+            nextIdx = Math.floor(Math.random() * state.queue.length);
+          }
+        }
+        return { ...state, currentSong: state.queue[nextIdx], isPlaying: true, currentTime: 0 };
+      }
+
       const idx = state.queue.findIndex(s => s.id === state.currentSong!.id);
       let nextIdx = idx + 1;
       if (nextIdx >= state.queue.length) {
@@ -131,10 +143,7 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     const onTimeUpdate = () => dispatch({ type: 'SET_TIME', time: audio.currentTime });
     const onDurationChange = () => dispatch({ type: 'SET_DURATION', duration: audio.duration });
     const onEnded = () => {
-      if (state.repeatMode === 'one') {
-        audio.currentTime = 0;
-        audio.play();
-      } else {
+      if (state.repeatMode !== 'one') {
         dispatch({ type: 'NEXT' });
       }
     };
@@ -156,7 +165,7 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     };
   }, [state.repeatMode]);
 
-  // Song change
+  // Song change (Play Count & History Logging)
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio || !state.currentSong) return;
@@ -164,6 +173,19 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
     audio.load();
     audio.play().catch(() => {});
     playStartRef.current = Date.now();
+
+    // Increment Play Count
+    songsService.incrementPlay(state.currentSong.id, state.currentSong.playCount).catch(() => {});
+
+    // Add to Listen History if logged in
+    if (user) {
+      historyService.add({
+        userId: user.id,
+        songId: state.currentSong.id,
+        playedAt: new Date().toISOString(),
+        duration: state.currentSong.duration
+      }).catch(() => {});
+    }
   }, [state.currentSong?.id]);
 
   // Play/pause control
@@ -176,6 +198,13 @@ export function PlayerProvider({ children }: { children: React.ReactNode }) {
       audio.pause();
     }
   }, [state.isPlaying]);
+
+  // Repeat Mode (Native Looping)
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.loop = state.repeatMode === 'one';
+  }, [state.repeatMode]);
 
   // Volume/mute
   useEffect(() => {

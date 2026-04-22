@@ -100,6 +100,15 @@ body {
    CUSTOM UTILITY CLASSES
    ============================================ */
 
+/* Hide scrollbar */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Glass morphism */
 .glass {
   background: rgba(255, 249, 236, 0.85);

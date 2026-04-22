@@ -4,6 +4,7 @@ import { Music, Heart, Clock } from 'lucide-react';
 import { Song } from '../types';
 import { songsService, likesService, historyService } from '../services/music.service';
 import { useAuth } from '../contexts/AuthContext';
+import { usePlayer } from '../contexts/PlayerContext';
 import SongRow from '../components/song/SongRow';
 import SongCard from '../components/song/SongCard';
 
@@ -25,6 +26,7 @@ export default function Library() {
   const [recentSongs, setRecentSongs] = useState<Song[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [view, setView] = useState<'list' | 'grid'>('list');
+  const { currentSong } = usePlayer();
 
   useEffect(() => {
     const load = async () => {
@@ -58,6 +60,16 @@ export default function Library() {
     };
     load();
   }, [user]);
+
+  // Update "Nghe Gần Đây" instantly when currentSong changes
+  useEffect(() => {
+    if (currentSong && !isLoading) {
+      setRecentSongs(prev => {
+        const filtered = prev.filter(s => s.id !== currentSong.id);
+        return [currentSong, ...filtered];
+      });
+    }
+  }, [currentSong?.id, isLoading]);
 
   const displaySongs = activeTab === 'liked' ? likedSongs
     : activeTab === 'recent' ? recentSongs
@@ -110,7 +122,7 @@ export default function Library() {
 
       {isLoading ? (
         <div className="flex items-center justify-center h-48">
-          <div className="w-8 h-8 rounded-full border-2 border-[#bbb28f] border-t-[#2c2c2c] animate-spin" />
+          <div className="w-8 h-8 rounded-full border-2 border-outline-variant border-t-primary animate-spin" />
         </div>
       ) : displaySongs.length === 0 ? (
         <div className="text-center py-20">

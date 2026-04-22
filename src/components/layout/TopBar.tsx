@@ -105,7 +105,7 @@ export default function TopBar() {
               value={query}
               onChange={e => setQuery(e.target.value)}
               placeholder="Tìm bài hát, nghệ sĩ, album..."
-              className="flex-1 bg-transparent text-sm outline-none placeholder:text-[#bbb28f]"
+              className="flex-1 bg-transparent text-sm outline-none placeholder:text-[#b6ac83]"
               style={{ color: '#383318' }}
             />
             {query && (
@@ -129,7 +129,7 @@ export default function TopBar() {
                 <button
                   key={song.id}
                   onClick={() => handleSongSelect(song)}
-                  className="w-full flex items-center gap-3 px-4 py-3 hover:bg-[#f6eed2] transition-colors text-left"
+                  className="w-full flex items-center gap-3 px-4 py-3 hover:bg-surface-container transition-colors text-left"
                 >
                   <img src={song.cover} alt={song.title}
                     className="w-9 h-9 rounded-lg object-cover" />
@@ -148,7 +148,7 @@ export default function TopBar() {
                   navigate(`/search?q=${encodeURIComponent(query)}`);
                   setShowDropdown(false);
                 }}
-                className="w-full px-4 py-3 text-sm text-center hover:bg-[#f6eed2] transition-colors border-t"
+                className="w-full px-4 py-3 text-sm text-center hover:bg-surface-container transition-colors border-t"
                 style={{ color: '#486272', borderColor: '#ede3bd' }}
               >
                 Xem tất cả kết quả cho "<strong>{query}</strong>"
@@ -160,9 +160,6 @@ export default function TopBar() {
 
       {/* Right actions */}
       <div className="flex items-center gap-3">
-        <button className="p-2 rounded-lg hover:bg-[#f2e8c7] transition-colors">
-          <Bell size={18} style={{ color: '#665f41' }} />
-        </button>
         {user && (
           <img
             src={user.avatar}

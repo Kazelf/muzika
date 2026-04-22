@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import {
   Compass, Search, Library, BarChart2, ListMusic,
-  Music2, User, LogOut, Plus, Heart
+  Music2, User, LogOut, Plus, Heart, ShieldCheck
 } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { usePlayer } from '../../contexts/PlayerContext';
@@ -47,7 +47,7 @@ export default function Sidebar() {
               `nav-item flex items-center gap-3 px-4 py-2.5 text-sm transition-all ${
                 isActive
                   ? 'active'
-                  : 'text-[#665f41] hover:text-[#383318]'
+                  : 'text-secondary hover:text-primary'
               }`
             }
           >
@@ -55,6 +55,20 @@ export default function Sidebar() {
             <span>{label}</span>
           </NavLink>
         ))}
+
+        {user?.role === 'admin' && (
+          <NavLink
+            to="/admin"
+            className={({ isActive }) =>
+              `nav-item flex items-center gap-3 px-4 py-2.5 text-sm ${
+                isActive ? 'active' : 'text-error hover:text-error'
+              }`
+            }
+          >
+            <ShieldCheck size={18} />
+            <span>Admin</span>
+          </NavLink>
+        )}
 
         {/* Divider */}
         <div className="my-4 h-px" style={{ background: '#ede3bd' }} />
@@ -64,7 +78,7 @@ export default function Sidebar() {
           to="/library?tab=liked"
           className={({ isActive }) =>
             `nav-item flex items-center gap-3 px-4 py-2.5 text-sm ${
-              isActive ? 'active' : 'text-[#665f41] hover:text-[#383318]'
+              isActive ? 'active' : 'text-secondary hover:text-primary'
             }`
           }
         >
@@ -75,7 +89,7 @@ export default function Sidebar() {
         {/* Create Playlist */}
         <button
           onClick={() => navigate('/playlists?new=true')}
-          className="nav-item w-full flex items-center gap-3 px-4 py-2.5 text-sm text-[#665f41] hover:text-[#383318]"
+          className="nav-item w-full flex items-center gap-3 px-4 py-2.5 text-sm text-secondary hover:text-primary"
         >
           <Plus size={18} />
           <span>Tạo Playlist</span>
@@ -127,7 +141,7 @@ export default function Sidebar() {
             <img
               src={user.avatar}
               alt={user.displayName}
-              className="w-9 h-9 rounded-full bg-[#e4e2e1]"
+              className="w-9 h-9 rounded-full bg-surface-container-high"
               onClick={() => navigate('/profile')}
             />
             <div className="flex-1 min-w-0">
@@ -138,7 +152,7 @@ export default function Sidebar() {
                 @{user.username}
               </p>
             </div>
-            <button onClick={logout} className="p-1.5 rounded-lg hover:bg-[#ede3bd] transition-colors">
+            <button onClick={logout} className="p-1.5 rounded-lg hover:bg-surface-container-highest transition-colors">
               <LogOut size={15} style={{ color: '#827b5b' }} />
             </button>
           </div>

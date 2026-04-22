@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "server": "json-server --watch db.json --port 9999",
+    "server": "node server.js",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -17,6 +17,8 @@
     "framer-motion": "^12.38.0",
     "json-server": "^0.17.4",
     "lucide-react": "^1.8.0",
+    "multer": "^2.1.1",
+    "music-metadata": "^11.12.3",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-hot-toast": "^2.6.0",
