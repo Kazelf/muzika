@@ -8,9 +8,7 @@
       "displayName": "Người Dùng Demo",
       "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=muzika",
       "bio": "Yêu âm nhạc mọi thể loại",
-      "following": [
-        "u2"
-      ],
+      "following": [],
       "followers": [],
       "createdAt": "2024-01-01T00:00:00Z",
       "role": "admin"
@@ -24,9 +22,7 @@
       "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=lover",
       "bio": "Jazz & Classical enthusiast",
       "following": [],
-      "followers": [
-        "u1"
-      ],
+      "followers": [],
       "createdAt": "2024-01-15T00:00:00Z"
     }
   ],
@@ -1192,6 +1188,11 @@
       "id": "l1776786764926",
       "userId": "u1",
       "songId": "s5"
+    },
+    {
+      "id": "l1776834649590",
+      "userId": "u1",
+      "songId": "s9"
     }
   ]
 }
