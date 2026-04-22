@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Users, UserPlus, UserCheck, Music, Play } from 'lucide-react';
 import { User, Song, Playlist } from '../types';
 import { usersService, playlistsService, songsService } from '../services/music.service';
+import api from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import { usePlayer } from '../contexts/PlayerContext';
 import toast from 'react-hot-toast';
@@ -13,7 +14,7 @@ interface UserWithData extends User {
 }
 
 export default function Social() {
-  const { user, updateUser } = useAuth();
+  const { user, syncUser } = useAuth();
   const { playSong } = usePlayer();
   const [users, setUsers] = useState<UserWithData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -47,18 +48,38 @@ export default function Social() {
 
   const toggleFollow = async (target: User) => {
     if (!user) return;
-    const following = isFollowing(target.id);
-    const myFollowing = user.following || [];
-    const targetFollowers = target.followers || [];
+    try {
+      const following = isFollowing(target.id);
+      const myFollowing = user.following || [];
+      const targetFollowers = target.followers || [];
 
-    if (following) {
-      await usersService.unfollow(user.id, target.id, myFollowing, targetFollowers);
-      await updateUser({ following: myFollowing.filter(id => id !== target.id) });
-      toast.success(`Đã bỏ theo dõi ${target.displayName}`);
-    } else {
-      await usersService.follow(user.id, target.id, myFollowing, targetFollowers);
-      await updateUser({ following: [...myFollowing, target.id] });
-      toast.success(`Đang theo dõi ${target.displayName}`);
+      if (following) {
+        await usersService.unfollow(user.id, target.id, myFollowing, targetFollowers);
+        toast.success(`Đã bỏ theo dõi ${target.displayName}`);
+      } else {
+        await usersService.follow(user.id, target.id, myFollowing, targetFollowers);
+        toast.success(`Đang theo dõi ${target.displayName}`);
+      }
+
+      // Reload both current user and target user data to sync state
+      const [updatedUserData, updatedTargetData] = await Promise.all([
+        api.get<User>(`/users/${user.id}`),
+        api.get<User>(`/users/${target.id}`),
+      ]);
+      
+      const { password: _, ...safeUser } = updatedUserData.data;
+      syncUser(safeUser as User);
+
+      // Update target user in the users list
+      setUsers(prevUsers =>
+        prevUsers.map(u =>
+          u.id === target.id
+            ? { ...u, followers: updatedTargetData.data.followers || [] }
+            : u
+        )
+      );
+    } catch (error) {
+      toast.error('Có lỗi xảy ra, vui lòng thử lại');
     }
   };
 

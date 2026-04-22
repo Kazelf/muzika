@@ -9,7 +9,8 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<boolean>;
   register: (data: { username: string; email: string; password: string; displayName: string }) => Promise<boolean>;
   logout: () => void;
-  updateUser: (data: Partial<User>) => Promise<void>;
+  updateUser: (data: Partial<User>, showToast?: boolean) => Promise<void>;
+  syncUser: (userData: User) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -23,7 +24,31 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const stored = localStorage.getItem('muzika_user');
     if (stored) {
       try {
-        setUser(JSON.parse(stored));
+        const parsedUser = JSON.parse(stored) as User;
+        // Ensure user has following/followers fields
+        const userWithDefaults: User = {
+          ...parsedUser,
+          following: parsedUser.following || [],
+          followers: parsedUser.followers || [],
+        };
+        setUser(userWithDefaults);
+
+        // Fetch fresh user data from server to sync latest following/followers
+        api.get<User>(`/users/${parsedUser.id}`)
+          .then(res => {
+            const { password: _, ...safeData } = res.data;
+            const freshData = {
+              ...safeData,
+              following: safeData.following || [],
+              followers: safeData.followers || [],
+            } as User;
+            setUser(freshData);
+            localStorage.setItem('muzika_user', JSON.stringify(freshData));
+          })
+          .catch(err => {
+            // If fetch fails, keep the localStorage version
+            console.error('Failed to sync user data:', err);
+          });
       } catch {
         localStorage.removeItem('muzika_user');
       }
@@ -46,10 +71,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         toast.error('Sai mật khẩu');
         return false;
       }
-      const { password: _, ...safeUser } = found;
+      
+      // Fetch fresh user data by ID to ensure latest following/followers
+      const freshRes = await api.get<User>(`/users/${found.id}`);
+      const freshUser = freshRes.data;
+      
+      const { password: _, ...safeUser } = freshUser;
       setUser(safeUser as User);
       localStorage.setItem('muzika_user', JSON.stringify(safeUser));
-      toast.success(`Chào mừng, ${found.displayName}! 🎵`);
+      toast.success(`Chào mừng, ${freshUser.displayName}! 🎵`);
       return true;
     } catch {
       toast.error('Đã xảy ra lỗi, vui lòng thử lại');
@@ -102,21 +132,30 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     toast.success('Đã đăng xuất');
   };
 
-  const updateUser = async (data: Partial<User>) => {
+  const updateUser = async (data: Partial<User>, showToast: boolean = true) => {
     if (!user) return;
     try {
       const res = await api.patch<User>(`/users/${user.id}`, data);
       const updated = { ...user, ...res.data };
       setUser(updated);
       localStorage.setItem('muzika_user', JSON.stringify(updated));
-      toast.success('Cập nhật thành công');
+      if (showToast) {
+        toast.success('Cập nhật thành công');
+      }
     } catch {
-      toast.error('Cập nhật thất bại');
+      if (showToast) {
+        toast.error('Cập nhật thất bại');
+      }
     }
   };
 
+  const syncUser = (userData: User) => {
+    setUser(userData);
+    localStorage.setItem('muzika_user', JSON.stringify(userData));
+  };
+
   return (
-    <AuthContext.Provider value={{ user, isLoading, login, register, logout, updateUser }}>
+    <AuthContext.Provider value={{ user, isLoading, login, register, logout, updateUser, syncUser }}>
       {children}
     </AuthContext.Provider>
   );

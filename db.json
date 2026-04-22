@@ -8,9 +8,7 @@
       "displayName": "Người Dùng Demo",
       "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=muzika",
       "bio": "Yêu âm nhạc mọi thể loại",
-      "following": [
-        "u2"
-      ],
+      "following": [],
       "followers": [],
       "createdAt": "2024-01-01T00:00:00Z"
     },
@@ -23,9 +21,7 @@
       "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=lover",
       "bio": "Jazz & Classical enthusiast",
       "following": [],
-      "followers": [
-        "u1"
-      ],
+      "followers": [],
       "createdAt": "2024-01-15T00:00:00Z"
     }
   ],
@@ -491,24 +487,6 @@
       "updatedAt": "2024-02-05T00:00:00Z"
     },
     {
-      "id": "p3",
-      "title": "Nhạc Jazz Cuối Tuần",
-      "description": "Tự động tạo - Jazz tốt nhất tuần này",
-      "cover": "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?w=400&h=400&fit=crop",
-      "userId": "system",
-      "songIds": [
-        "s6",
-        "s4",
-        "s1",
-        "s14"
-      ],
-      "isPublic": true,
-      "isAuto": true,
-      "playCount": 567,
-      "createdAt": "2024-02-10T00:00:00Z",
-      "updatedAt": "2024-02-10T00:00:00Z"
-    },
-    {
       "id": "p4",
       "title": "Yêu Thích",
       "description": "Những bài hát bạn đã thích",
@@ -754,14 +732,14 @@
       "songId": "s6"
     },
     {
-      "id": "l5",
-      "userId": "u1",
-      "songId": "s15"
-    },
-    {
       "id": "l1776786764926",
       "userId": "u1",
       "songId": "s5"
+    },
+    {
+      "id": "l1776834649590",
+      "userId": "u1",
+      "songId": "s9"
     }
   ]
 }
