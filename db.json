@@ -24,6 +24,18 @@
       "following": [],
       "followers": [],
       "createdAt": "2024-01-15T00:00:00Z"
+    },
+    {
+      "id": "u1776840213730",
+      "username": "a@gmail.com",
+      "email": "a@a",
+      "password": "123456",
+      "displayName": "f",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=a@gmail.com",
+      "bio": "",
+      "following": [],
+      "followers": [],
+      "createdAt": "2026-04-22T06:43:33.730Z"
     }
   ],
   "songs": [
@@ -92,7 +104,7 @@
           "text": "🎵 Instrumental"
         }
       ],
-      "playCount": 2103,
+      "playCount": 2106,
       "trending": true,
       "createdAt": "2024-01-03T00:00:00Z"
     },
@@ -161,7 +173,7 @@
           "text": "🎵 Instrumental"
         }
       ],
-      "playCount": 1895,
+      "playCount": 1897,
       "trending": true,
       "createdAt": "2024-01-06T00:00:00Z"
     },
@@ -184,7 +196,7 @@
           "text": "🎵 Instrumental"
         }
       ],
-      "playCount": 3206,
+      "playCount": 3208,
       "trending": true,
       "createdAt": "2024-01-07T00:00:00Z"
     },
@@ -253,7 +265,7 @@
           "text": "🎵 Instrumental"
         }
       ],
-      "playCount": 1671,
+      "playCount": 1672,
       "trending": false,
       "createdAt": "2024-01-10T00:00:00Z"
     },
@@ -554,10 +566,588 @@
           "text": ""
         }
       ],
-      "playCount": 4,
+      "playCount": 8,
       "trending": false,
       "year": 2026,
       "createdAt": "2026-04-22T04:02:11.478Z"
+    },
+    {
+      "title": "Daydreams",
+      "artist": "SOOBIN , BigDaddy , Touliver",
+      "cover": "https://photo-resize-zmp3.zadn.vn/w600_r1x1_jpeg/covers/c/0/c0fb01577de1906b91a3ec125fb829bf_1432018227.jpg",
+      "url": "/music/1776848453916-918287042.mp3",
+      "duration": 293,
+      "genre": "Pop",
+      "mood": "happy",
+      "id": "s1776848454031",
+      "artistId": "a1",
+      "albumId": "al1",
+      "album": "Single",
+      "lyrics": [
+        {
+          "time": 0.69,
+          "text": "..."
+        },
+        {
+          "time": 18.2,
+          "text": "Oh-oh, oh-oh"
+        },
+        {
+          "time": 34.77,
+          "text": "Từ khi quen em, anh đã mơ, anh đã quen với nỗi nhớ"
+        },
+        {
+          "time": 39.17,
+          "text": "Nhưng tại vì sao mà đôi tay không thể nắm chắc trái tim"
+        },
+        {
+          "time": 43.6,
+          "text": "Để rồi ngày sau anh đã cố giữ em ở lại"
+        },
+        {
+          "time": 46.32,
+          "text": "Và nỗi buồn vương trên mắt em còn lại gì"
+        },
+        {
+          "time": 49.35,
+          "text": "Nơi bình yên anh với em, thu qua đông đến giá lạnh"
+        },
+        {
+          "time": 53.87,
+          "text": "Rồi thời gian trôi dần xa theo đuổi anh về"
+        },
+        {
+          "time": 57,
+          "text": "Chỉ còn lại đây nỗi buồn cô đơn mang nhiều ưu phiền"
+        },
+        {
+          "time": 63.61,
+          "text": "Biết tìm đâu một hình bóng cũ"
+        },
+        {
+          "time": 67.08,
+          "text": "Đã mãi khắc ghi trong tâm trí anh từng ngày"
+        },
+        {
+          "time": 71.32,
+          "text": "Anh ước mỗi sáng khi anh thức giấc lại được có em trong tay"
+        },
+        {
+          "time": 75.8,
+          "text": "Anh ước mỗi tối anh sẽ luôn luôn là người chúc em ngủ ngon"
+        },
+        {
+          "time": 80.32,
+          "text": "Nhưng giờ đây thật quá khó"
+        },
+        {
+          "time": 82.48,
+          "text": "Em giờ đang ở nơi đó"
+        },
+        {
+          "time": 84.72,
+          "text": "Có biết mỗi đêm anh thức trắng, mong em sẽ quay trở về"
+        },
+        {
+          "time": 89.09,
+          "text": "Anh ước nắng sớm ban mai kia chiếu cho đôi tay anh không lạnh nữa"
+        },
+        {
+          "time": 93.44,
+          "text": "Anh sẽ giữ cho riêng mình nụ cười thơ ngây"
+        },
+        {
+          "time": 97.17,
+          "text": "Và em sẽ nói nhớ anh thật nhiều"
+        },
+        {
+          "time": 99.93,
+          "text": "Sẽ nói yêu anh thật lâu (huh-ooh)"
+        },
+        {
+          "time": 104.97,
+          "text": "Sẽ bên anh suốt đời này"
+        },
+        {
+          "time": 107.68,
+          "text": "..."
+        },
+        {
+          "time": 142.13,
+          "text": "Baby cho anh một nụ cười tươi như nắng"
+        },
+        {
+          "time": 145.17000000000002,
+          "text": "Selfie làm cái hình nền"
+        },
+        {
+          "time": 146.7,
+          "text": "Bởi vì hôm nay anh là người đàn ông may mắn"
+        },
+        {
+          "time": 149.7,
+          "text": "Có em đi cạnh bên"
+        },
+        {
+          "time": 150.97,
+          "text": "Say : na nà na nà na"
+        },
+        {
+          "time": 152.93,
+          "text": "Say : la là la là la"
+        },
+        {
+          "time": 154.97,
+          "text": "Ngoài phố cây thông mọc còn nhiều hơn nhà"
+        },
+        {
+          "time": 157.25,
+          "text": "Được đi với em thì còn quý hơn quà"
+        },
+        {
+          "time": 159.7,
+          "text": "Và buồn làm gì em ơi"
+        },
+        {
+          "time": 161.57,
+          "text": "Đừng tự làm mệt mình vì câu truyện không đáng nói"
+        },
+        {
+          "time": 163.57,
+          "text": "Giờ anh đã tới"
+        },
+        {
+          "time": 165.07999999999998,
+          "text": "Bao hạnh phúc khổ đau chia sẻ cùng anh với"
+        },
+        {
+          "time": 167.4,
+          "text": "Nói nhỏ với một mình anh thôi"
+        },
+        {
+          "time": 169.43,
+          "text": "Và anh sẽ nói cho cả thế giới"
+        },
+        {
+          "time": 171.96,
+          "text": "Yêu em là hết đời"
+        },
+        {
+          "time": 173.51,
+          "text": "Yêu em là hết lòng"
+        },
+        {
+          "time": 175.24,
+          "text": "Yêu em là hết mình"
+        },
+        {
+          "time": 176.92000000000002,
+          "text": "Baby i'm sorry"
+        },
+        {
+          "time": 178.04,
+          "text": "Anh ước mỗi sáng khi anh thức giấc lại được có em trong tay"
+        },
+        {
+          "time": 182.44,
+          "text": "Anh ước mỗi tối anh sẽ luôn luôn là người chúc em ngủ ngon"
+        },
+        {
+          "time": 186,
+          "text": "Nhưng giờ đây thật quá khó"
+        },
+        {
+          "time": 189.16,
+          "text": "em giờ đang ở nơi đó"
+        },
+        {
+          "time": 191.36,
+          "text": "Có biết mỗi đêm anh thức trắng mong em sẽ quay trở về"
+        },
+        {
+          "time": 195.68,
+          "text": "Anh ước nắng sớm ban mai kia giúp cho đôi tay anh không lạnh nữa"
+        },
+        {
+          "time": 200.29,
+          "text": "Anh sẽ giữ cho riêng mình nụ cười thơ ngây"
+        },
+        {
+          "time": 203.84,
+          "text": "Và em sẽ nói nhớ anh thật nhiều"
+        },
+        {
+          "time": 206.72,
+          "text": "Sẽ nói yêu anh thật lâu thật lâu"
+        },
+        {
+          "time": 211.65,
+          "text": "Sẽ bên anh đến suốt đời này"
+        },
+        {
+          "time": 216.13,
+          "text": "Sẽ bên anh đến suốt đời này"
+        },
+        {
+          "time": 220.72,
+          "text": "Sẽ bên anh đến suốt đời này"
+        },
+        {
+          "time": 231.53,
+          "text": "Anh ước mỗi sáng khi anh thức giấc lại được có em trong tay"
+        },
+        {
+          "time": 235.86,
+          "text": "Anh ước mỗi tối anh sẽ luôn luôn là người chúc em ngủ ngon"
+        },
+        {
+          "time": 240.21,
+          "text": "Nhưng giờ đây thật quá khó"
+        },
+        {
+          "time": 242.49,
+          "text": "em giờ đang ở nơi đó"
+        },
+        {
+          "time": 244.69,
+          "text": "Có biết mỗi đêm anh thức trắng mong em sẽ quay trở về"
+        },
+        {
+          "time": 248.93,
+          "text": "Anh ước nắng sớm ban mai kia giúp cho đôi tay anh không lạnh nữa"
+        },
+        {
+          "time": 253.65,
+          "text": "Anh sẽ giữ cho riêng mình nụ cười thơ ngây"
+        },
+        {
+          "time": 257.28,
+          "text": "Và em sẽ nói nhớ anh thật nhiều"
+        },
+        {
+          "time": 259.97,
+          "text": "Sẽ nói yêu anh thật lâu thật lâu"
+        },
+        {
+          "time": 264.88,
+          "text": "Sẽ bên anh đến suốt đời này"
+        },
+        {
+          "time": 269.32,
+          "text": "Sẽ bên anh đến suốt đời này"
+        },
+        {
+          "time": 273.8,
+          "text": "Sẽ bên anh đến suốt đời này"
+        },
+        {
+          "time": 278.22,
+          "text": "Sẽ bên anh đến suốt đời này"
+        },
+        {
+          "time": 282.77,
+          "text": "Sẽ bên anh đến suốt đời này"
+        },
+        {
+          "time": 285.65999999999997,
+          "text": ""
+        }
+      ],
+      "playCount": 2,
+      "trending": false,
+      "year": 2026,
+      "createdAt": "2026-04-22T09:00:54.031Z"
+    },
+    {
+      "title": "Khuôn Mặt Đáng Thương",
+      "artist": "Sơn Tùng M-TP",
+      "cover": "https://image-cdn.nct.vn/song/2024/03/15/4/c/b/d/1710499494829_300.jpg",
+      "url": "/music/1776848825057-165629885.mp3",
+      "duration": 257,
+      "genre": "Pop",
+      "mood": "happy",
+      "id": "s1776848825121",
+      "artistId": "a1",
+      "albumId": "al1",
+      "album": "Single",
+      "lyrics": [
+        {
+          "time": 0.08,
+          "text": "Em giờ đang ở nơi nào"
+        },
+        {
+          "time": 1.28,
+          "text": "Cơn gió mang em đi đến nơi nào"
+        },
+        {
+          "time": 2.46,
+          "text": "Bên cạnh ai kia ở nơi nào"
+        },
+        {
+          "time": 3.66,
+          "text": "Đôi chân em lang thang đến nơi nào"
+        },
+        {
+          "time": 5.06,
+          "text": "Cơn mơ màng mùi hương theo làn gió cuốn em đi"
+        },
+        {
+          "time": 8.55,
+          "text": "Kề bên vai ai từng đêm (eh)"
+        },
+        {
+          "time": 11.86,
+          "text": "Nhẹ nhàng giờ này anh (eh)"
+        },
+        {
+          "time": 14.82,
+          "text": "Mang em về liệu rằng em còn nhớ tiếng yêu không"
+        },
+        {
+          "time": 18.8,
+          "text": "Ở đây ngay phía sau em này (eh)"
+        },
+        {
+          "time": 22.03,
+          "text": "Lại một mình anh thôi níu giữ lại những âm thầm và nhớ"
+        },
+        {
+          "time": 25.36,
+          "text": "Đừng khiến đôi môi dịu êm phải chịu ngàn giọt nước mắt đắng cay"
+        },
+        {
+          "time": 30.05,
+          "text": "Hạt mưa rơi, tình chơi vơi, giấc mơ này biết đi về đâu oh"
+        },
+        {
+          "time": 35.19,
+          "text": "Bài hát khi xưa anh viết bây giờ phải đặt dấu chấm hết thôi"
+        },
+        {
+          "time": 39.64,
+          "text": "(Ở cuối con đường) Anh xin một điều ước"
+        },
+        {
+          "time": 44.03,
+          "text": "Cho em bình yên vững bước chân"
+        },
+        {
+          "time": 44.94,
+          "text": "Cánh hoa úa tàn, bước chân khép màn"
+        },
+        {
+          "time": 47.2,
+          "text": "Bóng ai xa ngút ngàn, nước mắt rơi ướt tràn"
+        },
+        {
+          "time": 50.08,
+          "text": "Sầu làn mi khép, tình buồn nay em biết đi về chốn đâu"
+        },
+        {
+          "time": 53.97,
+          "text": "Khuôn mặt đáng thương"
+        },
+        {
+          "time": 55.02,
+          "text": "Tấm thân héo mòn, nỗi đau có còn"
+        },
+        {
+          "time": 57.34,
+          "text": "Đắng cay em đã chọn, chính em đã chọn"
+        },
+        {
+          "time": 60.32,
+          "text": "Rời làn hơi ấm, tình này không thấm"
+        },
+        {
+          "time": 62.51,
+          "text": "Biết ai còn nhớ ai, khuôn mặt đáng thương"
+        },
+        {
+          "time": 65.29,
+          "text": "Cánh hoa úa tàn"
+        },
+        {
+          "time": 65.81,
+          "text": "Em giờ không phải em mà, anh thì không phải em mà"
+        },
+        {
+          "time": 68.23,
+          "text": "Khuôn mặt em yêu vẫn thế"
+        },
+        {
+          "time": 69.08,
+          "text": "Nhưng giờ cảm xúc đã quá nhạt phai mà"
+        },
+        {
+          "time": 71.06,
+          "text": "Nơi đâu cho anh cảm xúc thăng hoa"
+        },
+        {
+          "time": 72.22,
+          "text": "Nơi đâu anh nhìn khoảng cách đôi ta"
+        },
+        {
+          "time": 73.22,
+          "text": "Không gian nơi không chắc cho em nhìn ra"
+        },
+        {
+          "time": 74.58,
+          "text": "Một con người đến từ hôm qua"
+        },
+        {
+          "time": 75.99,
+          "text": "Em giờ đang ở nơi nào"
+        },
+        {
+          "time": 77,
+          "text": "Cơn gió mang em đi đến nơi nào"
+        },
+        {
+          "time": 78.53,
+          "text": "Bên cạnh ai kia ở nơi nào"
+        },
+        {
+          "time": 79.67,
+          "text": "Đôi chân em lang thang đến nơi nào"
+        },
+        {
+          "time": 81.36,
+          "text": "Nói cho anh nghe, nói cho anh nghe"
+        },
+        {
+          "time": 83.78999999999999,
+          "text": "Bước đi vội vàng"
+        },
+        {
+          "time": 85.52,
+          "text": "Cánh hoa úa tàn-tàn-tàn-tàn, tàn-tàn-tàn-tàn"
+        },
+        {
+          "time": 90.58,
+          "text": "Cánh hoa úa tàn-tàn-tàn-tàn, tàn-tàn-tàn-tàn"
+        },
+        {
+          "time": 95.49000000000001,
+          "text": "Cánh hoa úa tàn-tàn-tàn-tàn, tàn-tàn-tàn-tàn"
+        },
+        {
+          "time": 100.75999999999999,
+          "text": "Cánh hoa úa tàn"
+        },
+        {
+          "time": 106.47999999999999,
+          "text": ""
+        },
+        {
+          "time": 166.53,
+          "text": "Ngày đó, ánh mắt ấy sẽ mãi mãi không bên em nữa đâu"
+        },
+        {
+          "time": 171.73,
+          "text": "Làn gió, ánh mắt ấy sẽ mãi mãi không bên em gửi trao"
+        },
+        {
+          "time": 176.64,
+          "text": "Lời đó, ánh mắt ấy sẽ mãi mãi không bên em nữa đâu"
+        },
+        {
+          "time": 181.57,
+          "text": "Ở đó chắc có nhớ có khóc vấn vương vì ai"
+        },
+        {
+          "time": 186.96,
+          "text": "Ngày đó, ánh mắt ấy sẽ mãi mãi không bên em nữa đâu"
+        },
+        {
+          "time": 191.99,
+          "text": "Làn gió, ánh mắt ấy sẽ mãi mãi không bên em gửi trao"
+        },
+        {
+          "time": 196.78,
+          "text": "Lời đó, ánh mắt ấy sẽ mãi mãi không bên em nữa đâu"
+        },
+        {
+          "time": 201.94,
+          "text": "Ở đó chắc có nhớ có khóc vấn vương vì ai"
+        },
+        {
+          "time": 206.96,
+          "text": "Cánh hoa úa tàn, bước chân khép màn"
+        },
+        {
+          "time": 208.8,
+          "text": "Bóng ai xa ngút ngàn, nước mắt rơi ướt tràn"
+        },
+        {
+          "time": 211.77,
+          "text": "Sầu làn mi khép, tình buồn nay em biết đi về chốn đâu"
+        },
+        {
+          "time": 215.69,
+          "text": "Khuôn mặt đáng thương"
+        },
+        {
+          "time": 216.81,
+          "text": "Tấm thân héo mòn, nỗi đau có còn"
+        },
+        {
+          "time": 218.97,
+          "text": "Đắng cay em đã chọn, chính em đã chọn"
+        },
+        {
+          "time": 222,
+          "text": "Rời làn hơi ấm, tình này không thấm"
+        },
+        {
+          "time": 223.95,
+          "text": "Biết ai còn nhớ ai, khuôn mặt đáng thương"
+        },
+        {
+          "time": 227.04,
+          "text": "Cánh hoa úa tàn, bước chân khép màn"
+        },
+        {
+          "time": 229.25,
+          "text": "Bóng ai xa ngút ngàn, nước mắt rơi ướt tràn"
+        },
+        {
+          "time": 232.07,
+          "text": "Sầu làn mi khép, tình buồn nay em biết đi về chốn đâu"
+        },
+        {
+          "time": 235.87,
+          "text": "Khuôn mặt đáng thương"
+        },
+        {
+          "time": 236.75,
+          "text": "Tấm thân héo mòn, nỗi đau có còn"
+        },
+        {
+          "time": 239.28,
+          "text": "Đắng cay em đã chọn, chính em đã chọn"
+        },
+        {
+          "time": 241.98,
+          "text": "Rời làn hơi ấm, tình này không thấm"
+        },
+        {
+          "time": 243.99,
+          "text": "Biết ai còn nhớ ai, khuôn mặt đáng thương"
+        },
+        {
+          "time": 247.03,
+          "text": "Cánh hoa úa tàn"
+        },
+        {
+          "time": 248.84,
+          "text": ""
+        }
+      ],
+      "playCount": 1,
+      "trending": false,
+      "year": 2026,
+      "createdAt": "2026-04-22T09:07:05.121Z"
     }
   ],
   "artists": [
@@ -1161,14 +1751,121 @@
       "playedAt": "2026-04-22T04:26:34.095Z",
       "duration": 228,
       "id": "h1776831994095"
+    },
+    {
+      "userId": "u1",
+      "songId": "s1776830531478",
+      "playedAt": "2026-04-22T06:44:38.091Z",
+      "duration": 254,
+      "id": "h1776840278091"
+    },
+    {
+      "userId": "u1",
+      "songId": "s3",
+      "playedAt": "2026-04-22T06:45:43.569Z",
+      "duration": 222,
+      "id": "h1776840343569"
+    },
+    {
+      "userId": "u1",
+      "songId": "s6",
+      "playedAt": "2026-04-22T06:46:01.591Z",
+      "duration": 207,
+      "id": "h1776840361592"
+    },
+    {
+      "userId": "u1",
+      "songId": "s1776830531478",
+      "playedAt": "2026-04-22T06:46:21.255Z",
+      "duration": 254,
+      "id": "h1776840381255"
+    },
+    {
+      "userId": "u1",
+      "songId": "s6",
+      "playedAt": "2026-04-22T06:46:29.681Z",
+      "duration": 207,
+      "id": "h1776840389681"
+    },
+    {
+      "userId": "u1",
+      "songId": "s1776830531478",
+      "playedAt": "2026-04-22T06:46:31.025Z",
+      "duration": 254,
+      "id": "h1776840391025"
+    },
+    {
+      "userId": "u1",
+      "songId": "s3",
+      "playedAt": "2026-04-22T06:50:45.772Z",
+      "duration": 222,
+      "id": "h1776840645772"
+    },
+    {
+      "userId": "u1",
+      "songId": "s1776830531478",
+      "playedAt": "2026-04-22T08:43:15.427Z",
+      "duration": 254,
+      "id": "h1776847395427"
+    },
+    {
+      "userId": "u1",
+      "songId": "s3",
+      "playedAt": "2026-04-22T08:46:00.044Z",
+      "duration": 222,
+      "id": "h1776847560044"
+    },
+    {
+      "userId": "u1",
+      "songId": "s7",
+      "playedAt": "2026-04-22T08:46:13.698Z",
+      "duration": 228,
+      "id": "h1776847573698"
+    },
+    {
+      "userId": "u1",
+      "songId": "s7",
+      "playedAt": "2026-04-22T08:48:45.747Z",
+      "duration": 228,
+      "id": "h1776847725747"
+    },
+    {
+      "userId": "u1",
+      "songId": "s10",
+      "playedAt": "2026-04-22T08:48:57.466Z",
+      "duration": 162,
+      "id": "h1776847737467"
+    },
+    {
+      "userId": "u1",
+      "songId": "s1776830531478",
+      "playedAt": "2026-04-22T08:50:23.838Z",
+      "duration": 254,
+      "id": "h1776847823838"
+    },
+    {
+      "userId": "u1",
+      "songId": "s1776848454031",
+      "playedAt": "2026-04-22T09:01:03.306Z",
+      "duration": 293,
+      "id": "h1776848463306"
+    },
+    {
+      "userId": "u1",
+      "songId": "s1776848825121",
+      "playedAt": "2026-04-22T09:07:11.321Z",
+      "duration": 257,
+      "id": "h1776848831321"
+    },
+    {
+      "userId": "u1",
+      "songId": "s1776848454031",
+      "playedAt": "2026-04-22T10:11:55.539Z",
+      "duration": 293,
+      "id": "h1776852715539"
     }
   ],
   "likes": [
-    {
-      "id": "l1",
-      "userId": "u1",
-      "songId": "s7"
-    },
     {
       "id": "l2",
       "userId": "u1",
@@ -1193,6 +1890,11 @@
       "id": "l1776834649590",
       "userId": "u1",
       "songId": "s9"
+    },
+    {
+      "id": "l1776847729913",
+      "userId": "u1",
+      "songId": "s7"
     }
   ]
 }
