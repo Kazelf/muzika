@@ -9,7 +9,9 @@
       "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=muzika",
       "bio": "Yêu âm nhạc mọi thể loại",
       "following": [],
-      "followers": [],
+      "followers": [
+        "u1776933274667"
+      ],
       "createdAt": "2024-01-01T00:00:00Z",
       "role": "admin"
     },
@@ -22,7 +24,9 @@
       "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=lover",
       "bio": "Jazz & Classical enthusiast",
       "following": [],
-      "followers": [],
+      "followers": [
+        "u1776933274667"
+      ],
       "createdAt": "2024-01-15T00:00:00Z"
     },
     {
@@ -34,7 +38,9 @@
       "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=a@gmail.com",
       "bio": "",
       "following": [],
-      "followers": [],
+      "followers": [
+        "u1776933274667"
+      ],
       "createdAt": "2026-04-22T06:43:33.730Z"
     }
   ],
@@ -104,7 +110,7 @@
           "text": "🎵 Instrumental"
         }
       ],
-      "playCount": 2106,
+      "playCount": 2107,
       "trending": true,
       "createdAt": "2024-01-03T00:00:00Z"
     },
@@ -566,7 +572,7 @@
           "text": ""
         }
       ],
-      "playCount": 8,
+      "playCount": 10,
       "trending": false,
       "year": 2026,
       "createdAt": "2026-04-22T04:02:11.478Z"
@@ -853,7 +859,7 @@
           "text": ""
         }
       ],
-      "playCount": 2,
+      "playCount": 5,
       "trending": false,
       "year": 2026,
       "createdAt": "2026-04-22T09:00:54.031Z"
@@ -1148,6 +1154,181 @@
       "trending": false,
       "year": 2026,
       "createdAt": "2026-04-22T09:07:05.121Z"
+    },
+    {
+      "title": "Dạo Bước Hongkong 1999",
+      "artist": "MCK",
+      "cover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX_WCmcyuzbT6yAnQrsNpSHTBJTqcMTeunGg&s",
+      "url": "/music/1776933706991-715927487.mp3",
+      "duration": 194,
+      "genre": "Pop",
+      "mood": "happy",
+      "id": "s1776933707106",
+      "artistId": "a1",
+      "albumId": "al1",
+      "album": "Single",
+      "lyrics": [
+        {
+          "time": 2,
+          "text": "Hẹn vào một đêm trăng sáng"
+        },
+        {
+          "time": 4,
+          "text": "Ước mơ của ta và nàng"
+        },
+        {
+          "time": 6,
+          "text": "Bóng hình anh yêu"
+        },
+        {
+          "time": 8,
+          "text": "Cùng anh viết bài ca tình của riêng đôi ta"
+        },
+        {
+          "time": 10,
+          "text": "Nhỡ đâu em chẳng nhớ"
+        },
+        {
+          "time": 12,
+          "text": "Về lời hẹn ước nếu duyên tình ta có lỡ"
+        },
+        {
+          "time": 14,
+          "text": "Nguyện sát theo em"
+        },
+        {
+          "time": 16,
+          "text": "Anh tin vào nàng"
+        },
+        {
+          "time": 18,
+          "text": "Yeah"
+        },
+        {
+          "time": 20,
+          "text": "Yeah, fuck, thấy em, girl, chạm mặt trên phố"
+        },
+        {
+          "time": 22,
+          "text": "Yeah, huh, huh, thấy em vội vàng trên phố"
+        },
+        {
+          "time": 24,
+          "text": "Vì ta đã yêu thế thôi"
+        },
+        {
+          "time": 26,
+          "text": "Chạm khẽ môi"
+        },
+        {
+          "time": 28,
+          "text": "Nhưng tại sao ở trong trái tim nhau rồi"
+        },
+        {
+          "time": 30,
+          "text": "Đến đây tận cùng thế gian"
+        },
+        {
+          "time": 32,
+          "text": "Đến đây tận cùng thế gian"
+        },
+        {
+          "time": 34,
+          "text": "Nếu duyên tình ta trái ngang, thế sao anh đành"
+        },
+        {
+          "time": 36,
+          "text": "Còn nhỡ như em chẳng nhớ"
+        },
+        {
+          "time": 38,
+          "text": "Về lời hẹn ước nếu duyên tình ta có lỡ"
+        },
+        {
+          "time": 40,
+          "text": "Tình nồng làm sao giấu"
+        },
+        {
+          "time": 42,
+          "text": "Những luyến lưu trào dâng"
+        },
+        {
+          "time": 44,
+          "text": "Chuyện mình để vầng trăng kia chứng giám"
+        },
+        {
+          "time": 46,
+          "text": "Hẹn vào một đêm trăng sáng"
+        },
+        {
+          "time": 48,
+          "text": "Ước mơ của ta và nàng"
+        },
+        {
+          "time": 50,
+          "text": "Bóng hình anh yêu"
+        },
+        {
+          "time": 52,
+          "text": "Cùng anh viết bài ca tình của riêng đôi ta"
+        },
+        {
+          "time": 54,
+          "text": "Nhỡ đâu em chẳng nhớ"
+        },
+        {
+          "time": 56,
+          "text": "Về lời hẹn ước nếu duyên tình ta có lỡ"
+        },
+        {
+          "time": 58,
+          "text": "Nguyện sát theo em"
+        },
+        {
+          "time": 60,
+          "text": "Anh tin vào nàng"
+        },
+        {
+          "time": 62,
+          "text": "Yeah"
+        },
+        {
+          "time": 64,
+          "text": "Hẹn vào một đêm trăng sáng"
+        },
+        {
+          "time": 66,
+          "text": "Ước mơ của ta và nàng"
+        },
+        {
+          "time": 68,
+          "text": "Có hai người yêu nhau"
+        },
+        {
+          "time": 70,
+          "text": "Cùng nhau viết bài ca tình dành riêng cho nhau"
+        },
+        {
+          "time": 72,
+          "text": "Nhỡ đâu em chẳng nhớ"
+        },
+        {
+          "time": 74,
+          "text": "Về lời hẹn ước nếu duyên tình ta có lỡ"
+        },
+        {
+          "time": 76,
+          "text": "Thì nguyện sát theo em"
+        },
+        {
+          "time": 78,
+          "text": "Anh tin vào em"
+        }
+      ],
+      "playCount": 1,
+      "trending": false,
+      "year": 2026,
+      "createdAt": "2026-04-23T08:41:47.106Z"
     }
   ],
   "artists": [
@@ -1863,6 +2044,41 @@
       "playedAt": "2026-04-22T10:11:55.539Z",
       "duration": 293,
       "id": "h1776852715539"
+    },
+    {
+      "userId": "u1",
+      "songId": "s1776848454031",
+      "playedAt": "2026-04-23T07:56:34.278Z",
+      "duration": 293,
+      "id": "h1776930994278"
+    },
+    {
+      "userId": "u1",
+      "songId": "s1776830531478",
+      "playedAt": "2026-04-23T08:01:19.403Z",
+      "duration": 254,
+      "id": "h1776931279403"
+    },
+    {
+      "userId": "u1",
+      "songId": "s1776848454031",
+      "playedAt": "2026-04-23T08:05:34.122Z",
+      "duration": 293,
+      "id": "h1776931534122"
+    },
+    {
+      "userId": "u1",
+      "songId": "s1776933707106",
+      "playedAt": "2026-04-23T08:42:02.590Z",
+      "duration": 194,
+      "id": "h1776933722590"
+    },
+    {
+      "userId": "u1",
+      "songId": "s1776848454031",
+      "playedAt": "2026-04-23T08:46:11.852Z",
+      "duration": 293,
+      "id": "h1776933971852"
     }
   ],
   "likes": [
